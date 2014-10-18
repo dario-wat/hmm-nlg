@@ -1,5 +1,8 @@
 from nltk.tokenize import RegexpTokenizer
-from nltk.model.ngram import NgramModel
+import nltk
+from NgramModel.NgramModel import NgramModel
+
+
 from nltk.probability import LidstoneProbDist
 
 tokenizer = RegexpTokenizer(r'\w+|[^\w\s]+')
