@@ -18,8 +18,14 @@ import ngram
 import sys
 
 string = ''
-with open(sys.argv[1]) as f:
-	string = f.read()
+try:
+    f= open(sys.argv[1])
+except IndexError:
+    f = open('rawcorpus/andersen.txt')
+
+print f
+
+string = f.read()
 print len(string)
 print len(string.split())
 
