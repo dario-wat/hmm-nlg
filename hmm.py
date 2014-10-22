@@ -10,9 +10,25 @@ from utils import *
 
 from sys import argv
 from operator import itemgetter
+from optparse import OptionParser
 
 import random
 import logging
+
+def parseArguments():
+	parser = OptionParser()
+	parser.add_option('-f', '--filename', dest='filename', type='string',
+		help='Corpus file')
+	parser.add_option('-l', '--log', dest='logFlag',
+		help='Print log to console', default=False, action='store_true')
+	parser.add_option('-t', '--type', dest='type', type='choice',
+		help="""Type of generation:
+				super=supervised,
+				unsuper=unsupervised,
+				chunk=chunked supervised""",
+		choices=['super', 'unsuper', 'chunk'], default='super')
+	return parser.parse_args()
+
 
 class ChunkWrapper:
 
@@ -75,33 +91,113 @@ class ChunkWrapper:
 
 
 class HmmWrapper:
-		pass
+	
+	def __init__(self, states, symbols):
+		"""
+		Constructs trainer/hmm using states and symbols.
+
+		:states type: list
+		:symbols type: list(tuple)
+		"""
+
+		self._hmm = None
+		self._trainer = hmm.HiddenMarkovModelTrainer(states=states, symbols=symbols)
+
+	def trainSupervised(self, labeledCorpus):
+		"""
+		Trains hmm with labeled corpus.
+
+		:labeledCorpus type: list(list(tuple))
+		:rtype: nltk.tag.hmm.HiddenMarkovModelTagger
+		"""
+		self._hmm = self._trainer.train_supervised(labeledCorpus)
+
+	def trainUnsupervised(self, unlabeledCorpus, maxIter=10):
+		"""
+		Trains hmm with unlabeled corpus. Unlabeled corpus is exactly like
+		labeled, but the tags are empty strings.
+
+		:unlabeledCorpus type: list(list(tuple))
+		:rtype: nltk.tag.hmm.HiddenMarkovMode
+		"""
+		self._hmm = self._trainer.train_unsupervised(unlabeledCorpus, max_iterations=maxIter)
+
+	def generate(self, length=20):
+		"""
+		Generates random sequence of a at least 'length' words.
+
+		:length type: int
+		:rtype: str
+		"""
+
+		if self._hmm is None:
+			raise StandardError('Hmm not trained')
+		return ' '.join(map(lambda (x, _): x, self._hmm.random_sample(random.Random(), length)))
 
 
-# logging settings, prints everything to stderr
-logging.basicConfig(format='%(levelname)s\n:%(message)s', level=logging.DEBUG)
+def main():
+	opt, _ = parseArguments()
+
+	if opt.filename is None:
+		raise StandardError('Corpus file required')
+
+	if opt.logFlag:
+		# logging settings, prints everything to stderr
+		logging.basicConfig(format='%(levelname)s\n:%(message)s', level=logging.DEBUG)
+
+	# read file
+	logging.info('Reading file: ' + opt.filename)
+	f = open(opt.filename)
+	string = f.read()
+	f.close()
+
+	if opt.type == 'super':			# supervised
+		logging.info('Supervised')
+		
+		logging.info('Filtering corpus...')		
+		corpus = tag(string)
+		states = unique_list(tag for sent in corpus for (_,tag) in sent)
+		symbols = unique_list(word for sent in corpus for (word, _) in sent)
+		
+		logging.info('Training hmm...')
+		trainer = HmmWrapper(states, symbols)
+		trainer.trainSupervised(corpus)
+
+		print trainer.generate()
+
+	elif opt.type == 'unsuper':		# unsupervised
+		logging.info('Unsupervised')
+
+		logging.info('Filtering corpus')
+		corpus = tagEmpty(string)
+		states = range(5)
+		symbols = unique_list(word for sent in corpus for (word, _) in sent)
+		
+		logging.info('Training hmm...')
+		trainer = HmmWrapper(states, symbols)
+		trainer.trainUnsupervised(corpus)
+		
+		print trainer.generate()
+		
+	else:							# chunked supervised
+		logging.info('Chunked supervised')
+
+		logging.info('Training chunk parser...')
+		chunker = ChunkWrapper()
+		
+		logging.info('Chunking corpus...')
+		corpus = map(lambda s: chunker.parse(s), tag(string))	
+		states = unique_list(tag for sent in corpus for (word,tag) in sent)
+		symbols = unique_list(word for sent in corpus for (word,tag) in sent)
+		
+		logging.info('Training hmm...')
+		trainer = HmmWrapper(states, symbols)
+		trainer.trainSupervised(corpus)
+
+		print trainer.generate()
 
 
 
 if __name__ == '__main__':
-		
-	logging.info('Training chunk parser...')
-	chunker = ChunkWrapper()
-
-	# supervised training
-	corpus = map(lambda s: chunker.parse(s), brown.tagged_sents(categories='news'))
-
-	states = unique_list(tag for sent in corpus for (word,tag) in sent)
-	symbols = unique_list(word for sent in corpus for (word,tag) in sent)
-
-	# unsupervised training
-
-	# symbols = list(set([ss[0] for sss in seq for ss in sss]))
-	# states = range(20)
-	# m = trainer.train_unsupervisedseq, max_iterations=30)
-	#states = symbols
-
-	trainer = hmm.HiddenMarkovModelTrainer(states=states,symbols=symbols)
-	hmmTrained = trainer.train_supervised(corpus)
+	main()
 	
-	print ' '.join(map(lambda (x, _): x, hmmTrained.random_sample(random.Random(),50)))
