@@ -25,8 +25,9 @@ def parseArguments():
 		help="""Type of generation:
 				super=supervised,
 				unsuper=unsupervised,
-				chunk=chunked supervised""",
-		choices=['super', 'unsuper', 'chunk'], default='super')
+				chunk=chunked supervised,
+				all=precomputes all""",
+		choices=['super', 'unsuper', 'chunk', 'all'], default='super')
 	return parser.parse_args()
 
 
@@ -135,29 +136,84 @@ class HmmWrapper:
 		return ' '.join(map(lambda (x, _): x, self._hmm.random_sample(random.Random(), length)))
 
 
+def hmmFactory(trainType, string):
+	"""
+	Creates hmm by it's type and the given corpus.
 
-def loop(gen):
+	:trainType type: str
+	:string type: str
+	:rtype: HmmWrapper
+	"""
+
+	if trainType == 'super':			# supervised
+		
+		logging.info('Supervised')
+		
+		logging.info('Filtering corpus...')		
+		corpus = tag(string)
+		states = unique_list(tag for sent in corpus for (_,tag) in sent)
+		symbols = unique_list(word for sent in corpus for (word, _) in sent)
+		
+		logging.info('Training hmm...')
+		trainer = HmmWrapper(states, symbols)
+		trainer.trainSupervised(corpus)
+
+		return trainer
+
+	elif trainType == 'unsuper':		# unsupervised
+		
+		logging.info('Unsupervised')
+
+		logging.info('Filtering corpus')
+		corpus = tagEmpty(string)
+		states = range(5)
+		symbols = unique_list(word for sent in corpus for (word, _) in sent)
+		
+		logging.info('Training hmm...')
+		trainer = HmmWrapper(states, symbols)
+		trainer.trainUnsupervised(corpus)
+		
+		return trainer
+
+	else:							# chunked supervised
+		
+		logging.info('Chunked supervised')
+
+		logging.info('Training chunk parser...')
+		chunker = ChunkWrapper()
+		
+		logging.info('Chunking corpus...')
+		corpus = tagChunk(string, chunker)
+		states = unique_list(tag for sent in corpus for (_, tag) in sent)
+		symbols = unique_list(word for sent in corpus for (word, _) in sent)
+		
+		logging.info('Training hmm...')
+		trainer = HmmWrapper(states, symbols)
+		trainer.trainSupervised(corpus)
+
+		return trainer
+
+
+def loopOnce(gen):
 	"""
 	Used for generating text after hmm has been trained. Exits when number
 	less than 0 has been given.
 
 	:gen type: HmmWrapper
 	"""
-
-	while 1:		
-		try:
-			print 'Text length:'
-			n = input()
-			if n < 0:
-				print 'Exiting loop...'
-				break
-			
-			print 'Generating...'
-			print '=================================='
-			print gen.generate(n)
-			print '=================================='
-		except ValueError:
-			print 'Could not parse it'
+		
+	try:
+		print 'Text length:'
+		n = input()
+		if n < 0:
+			return
+		
+		print 'Generating...'
+		print '=================================='
+		print gen.generate(n)
+		print '=================================='
+	except ValueError:
+		print 'Could not parse it'
 
 
 def main():
@@ -176,51 +232,31 @@ def main():
 	string = f.read()
 	f.close()
 
-	if opt.type == 'super':			# supervised
-		logging.info('Supervised')
+	# create hmm generator
+	if opt.type == 'all':		# create all
+		supGen = hmmFactory('super', string)
+		unsupGen = hmmFactory('unsuper', string)
+		chunkGen = hmmFactory('chunk', string)
 		
-		logging.info('Filtering corpus...')		
-		corpus = tag(string)
-		states = unique_list(tag for sent in corpus for (_,tag) in sent)
-		symbols = unique_list(word for sent in corpus for (word, _) in sent)
-		
-		logging.info('Training hmm...')
-		trainer = HmmWrapper(states, symbols)
-		trainer.trainSupervised(corpus)
+		while 1:
+			print 'Generator Type (s=super, u=unsuper, c=chunk)'
+			t = raw_input()
+			
+			# generator choice
+			gen = None
+			if 		t == 's':	gen = supGen
+			elif	t == 'u':	gen = unsupGen
+			elif	t == 'c':	gen = chunkGen
+			else:
+				print 'Incorrect type'
+				continue
+			
+			loopOnce(gen)
 
-		loop(trainer)
-
-	elif opt.type == 'unsuper':		# unsupervised
-		logging.info('Unsupervised')
-
-		logging.info('Filtering corpus')
-		corpus = tagEmpty(string)
-		states = range(5)
-		symbols = unique_list(word for sent in corpus for (word, _) in sent)
-		
-		logging.info('Training hmm...')
-		trainer = HmmWrapper(states, symbols)
-		trainer.trainUnsupervised(corpus)
-		
-		loop(trainer)
-
-	else:							# chunked supervised
-		logging.info('Chunked supervised')
-
-		logging.info('Training chunk parser...')
-		chunker = ChunkWrapper()
-		
-		logging.info('Chunking corpus...')
-		corpus = tagChunk(string, chunker)
-		states = unique_list(tag for sent in corpus for (_, tag) in sent)
-		symbols = unique_list(word for sent in corpus for (word, _) in sent)
-		
-		logging.info('Training hmm...')
-		trainer = HmmWrapper(states, symbols)
-		trainer.trainSupervised(corpus)
-
-		loop(trainer)
-
+	else:						# create specific
+		gen = hmmFactory(opt.type, string)
+		while 1:
+			loopOnce(gen)
 
 
 if __name__ == '__main__':
