@@ -14,63 +14,94 @@ from operator import itemgetter
 import random
 import logging
 
-# logging settings, prints everything to stderr
-logging.basicConfig(format='%(levelname)s\n:%(message)s', level=logging.DEBUG)
+class ChunkWrapper:
 
-if __name__ == '__main__':
-	
 	# test and train sentences for chunk parser
 	test_sents = conll2000.chunked_sents('test.txt', chunk_types=['NP'])
 	train_sents = conll2000.chunked_sents('train.txt', chunk_types=['NP'])
 
-	# creating chunk parser, and training it with conll2000 corpus
-	chunkParser = NEChunkParser(train_sents)
-	logging.info(chunkParser.evaluate(test_sents))
+	def __init__(self, train=train_sents):
+		"""
+		Creating chunk parser, and training it with conll2000 corpus.
+		
+		:train type: list(list(tuple))
+		"""
+		self._chunkParser = NEChunkParser(train)
 
-	
-	s = """I am trying to use stupid hmm to generate a random sentence. This random sentence
-	                is supposed to be very good, good"""
-	ss = tag(s)
+	def parse(self, sent):
+		"""
+		Chunks given sentence, returns chunked tagged sentence.
 
-	print chunkParser.parse(ss[0])
-	#try:
-	#    f= open(sys.argv[1])
-	#except IndexError:
-	#    f = open('rawcorpus/andersen.txt')
+		:sent type: list(tuple)
+		:rtype: list(tuple)
+		"""
+		return ChunkWrapper._extractFromTree(self._chunkParser.parse(sent))
 
-	#s= f.read()
-	#f.close()
+	@staticmethod
+	def _convertChunk(chunk):
+		"""
+		Converts chunk into tuple consisting of string and tag.
 
-	#s = s[0:3000]
+		:chunk type: nltk.tree.Tree or tuple
+		:rtype: tuple
+		"""
+
+		try:						# in case of Tree
+			tag = chunk.label()
+			phrase = ' '.join(map(itemgetter(0), chunk))
+			return (phrase, tag)
+		except AttributeError:		# in case of tuple
+			return chunk
+
+	@staticmethod
+	def _extractFromTree(tree):
+		"""
+		Extracts words/phrases from tree structure defined by nltk. Returns
+		all nodes on level 1.
+
+		:tree type: nltk.tree.Tree
+		:rtype: list(str)
+		"""
+		return map(ChunkWrapper._convertChunk, tree)
+
+	def evaluate(self, test=test_sents):
+		"""
+		Evaluates chunk parser on the test set.
+
+		:test type: list(list(tuple))
+		:rtype: str
+		"""
+		return self._chunkParser.evaluate(test)
+
+
+class HmmWrapper:
+		pass
+
+
+# logging settings, prints everything to stderr
+logging.basicConfig(format='%(levelname)s\n:%(message)s', level=logging.DEBUG)
+
+
+
+if __name__ == '__main__':
+		
+	logging.info('Training chunk parser...')
+	chunker = ChunkWrapper()
 
 	# supervised training
+	corpus = map(lambda s: chunker.parse(s), brown.tagged_sents(categories='news'))
 
-	#corpus = nltk.corpus.brown.tagged_sents(categories='news')#[:3000]
-	#corpus = conll2000.tagged_sents()
-	#print corpus
-
-	#states = unique_list(tag for sent in corpus for (word,tag) in sent)
-	#symbols = unique_list(word for sent in corpus for (word,tag) in sent)
-
-	#sentences = nltk.sent_tokenize(s)
-
-	#tag_set = unique_list(tag for (word,tag) in corpus)
-	#seq = [map(lambda x:(x,''), ss.split()) for ss in sentences]
-	#seq = [word for sent in sentences for word in nltk.word_tokenize(sent)]
+	states = unique_list(tag for sent in corpus for (word,tag) in sent)
+	symbols = unique_list(word for sent in corpus for (word,tag) in sent)
 
 	# unsupervised training
 
 	# symbols = list(set([ss[0] for sss in seq for ss in sss]))
 	# states = range(20)
-
-	#states = symbols
-	#trainer = nltk.tag.hmm.HiddenMarkovModelTrainer(states=states,symbols=symbols)
-	#print map(itemgetter(0), corpus)
-	#hmm = trainer.train_supervised(corpus)
 	# m = trainer.train_unsupervisedseq, max_iterations=30)
+	#states = symbols
 
-	#print ' '.join(map(lambda (x, _): x, hmm.random_sample(random.Random(),50)))
-
-
-	class HmmWrapper:
-		pass
+	trainer = hmm.HiddenMarkovModelTrainer(states=states,symbols=symbols)
+	hmmTrained = trainer.train_supervised(corpus)
+	
+	print ' '.join(map(lambda (x, _): x, hmmTrained.random_sample(random.Random(),50)))
