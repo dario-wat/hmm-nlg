@@ -19,3 +19,7 @@ def tagEmpty(string):
 def tokenize(string):
 	"""Tokenizes a string into a list of list of words (list of sentences)."""
 	return map(word_tokenize, sent_tokenize(string))
+
+def tagChunk(string, chunker):
+	"""Tokenizes a string and chunks the sentences."""
+	return map(lambda s: chunker.parse(s), tag(string))

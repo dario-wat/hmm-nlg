@@ -16,7 +16,7 @@ import random
 import logging
 
 def parseArguments():
-	parser = OptionParser()
+	parser = OptionParser(usage='usage: %prog [options]')
 	parser.add_option('-f', '--filename', dest='filename', type='string',
 		help='Corpus file')
 	parser.add_option('-l', '--log', dest='logFlag',
@@ -135,6 +135,31 @@ class HmmWrapper:
 		return ' '.join(map(lambda (x, _): x, self._hmm.random_sample(random.Random(), length)))
 
 
+
+def loop(gen):
+	"""
+	Used for generating text after hmm has been trained. Exits when number
+	less than 0 has been given.
+
+	:gen type: HmmWrapper
+	"""
+
+	while 1:		
+		try:
+			print 'Text length:'
+			n = input()
+			if n < 0:
+				print 'Exiting loop...'
+				break
+			
+			print 'Generating...'
+			print '=================================='
+			print gen.generate(n)
+			print '=================================='
+		except ValueError:
+			print 'Could not parse it'
+
+
 def main():
 	opt, _ = parseArguments()
 
@@ -143,7 +168,7 @@ def main():
 
 	if opt.logFlag:
 		# logging settings, prints everything to stderr
-		logging.basicConfig(format='%(levelname)s\n:%(message)s', level=logging.DEBUG)
+		logging.basicConfig(format='[%(levelname)s] %(message)s', level=logging.DEBUG)
 
 	# read file
 	logging.info('Reading file: ' + opt.filename)
@@ -163,7 +188,7 @@ def main():
 		trainer = HmmWrapper(states, symbols)
 		trainer.trainSupervised(corpus)
 
-		print trainer.generate()
+		loop(trainer)
 
 	elif opt.type == 'unsuper':		# unsupervised
 		logging.info('Unsupervised')
@@ -177,8 +202,8 @@ def main():
 		trainer = HmmWrapper(states, symbols)
 		trainer.trainUnsupervised(corpus)
 		
-		print trainer.generate()
-		
+		loop(trainer)
+
 	else:							# chunked supervised
 		logging.info('Chunked supervised')
 
@@ -186,15 +211,15 @@ def main():
 		chunker = ChunkWrapper()
 		
 		logging.info('Chunking corpus...')
-		corpus = map(lambda s: chunker.parse(s), tag(string))	
-		states = unique_list(tag for sent in corpus for (word,tag) in sent)
-		symbols = unique_list(word for sent in corpus for (word,tag) in sent)
+		corpus = tagChunk(string, chunker)
+		states = unique_list(tag for sent in corpus for (_, tag) in sent)
+		symbols = unique_list(word for sent in corpus for (word, _) in sent)
 		
 		logging.info('Training hmm...')
 		trainer = HmmWrapper(states, symbols)
 		trainer.trainSupervised(corpus)
 
-		print trainer.generate()
+		loop(trainer)
 
 
 
