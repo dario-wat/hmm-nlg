@@ -18,6 +18,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import brown
 import ngram
 import sys
+from evaluate.evaluate import Evaluate
 
 string = ''
 if len(sys.argv) > 1:
@@ -39,4 +40,13 @@ else:
 print len(brown.words())
 
 trigram = ngram.Ngram(3, brown.words())
-print trigram.generate(70, afterModify=ngram.endSentence)
+sample =  trigram.generate(30, afterModify=ngram.endSentence)
+print sample
+corpussub = brown.sents()[:3000]
+sents = map(lambda s: ' '.join(s), corpussub)
+finsents = reduce(lambda a,b: a + ' '+ b, sents)
+# print finsents
+evalf = Evaluate()
+evalf.setTarget(sample)
+print evalf.POSChecker(finsents)
+print evalf.lctest()
