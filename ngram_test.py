@@ -45,8 +45,9 @@ print sample
 corpussub = brown.sents()[:3000]
 sents = map(lambda s: ' '.join(s), corpussub)
 finsents = reduce(lambda a,b: a + ' '+ b, sents)
-# print finsents
 evalf = Evaluate()
 evalf.setTarget(sample)
+evalf.initBleu(sents)
 print evalf.POSChecker(finsents)
 print evalf.lctest()
+print "Bleu score: %.2f" % evalf.Bleu(sample)

@@ -231,7 +231,6 @@ def main():
 	f = open(opt.filename)
 	string = f.read()
 	f.close()
-
 	# create hmm generator
 	if opt.type == 'all':		# create all
 		supGen = hmmFactory('super', string)
