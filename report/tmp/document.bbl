@@ -1,0 +1,62 @@
+\begin{thebibliography}{10}
+
+\bibitem{nlgScratch}
+Ronan Collobert, Jason Weston, L�on Bottoua, Michael Karlen, Koray
+  Kavukcuoglu, and Pavel Kuksa.
+\newblock Natural language processing (almost) from scratch.
+\newblock {\em Journal of Machine Learning Research}, 2011.
+
+\bibitem{hmmdial}
+Heriberto Cuayahuitl, Steve Renals, Oliver Lemon, and Hiroshi Shimodaira.
+\newblock {Human-Computer Dialogue Simulation using Hidden Markov Models}.
+
+\bibitem{hmmnlg}
+Nina Dethlefs and Heriberto Cuayahuitl.
+\newblock {Hierarchical Reinforcment Learning and Hidden Markov Models for
+  Task-Oriented Natural Language Generation}.
+
+\bibitem{autoeval}
+G.~Doddington.
+\newblock {Automatic evaluation of machine translation quality using n-gram
+  cooccurrence statistics}.
+\newblock In {\em Proceedings of the Human Language Technology Conference
+  (HLT)}, 2002.
+
+\bibitem{hmmsr}
+XD~Huang, Y~Ariki, and MA~Jack.
+\newblock {\em Hidden Markov Models for Speech Recognition}.
+\newblock Number ISBN 0-7486-0162-7. Edinburgh University Press, 1st edition,
+  1990.
+
+\bibitem{nlgngram}
+Irene Langkilde and Kevin Knight.
+\newblock The practical value of n-gram in generation.
+\newblock {\em Natural Language Generation Workshop}, 1998.
+
+\bibitem{evalnlg}
+Ehud Reiter and Anja Belz.
+\newblock {An Investigation into the Validity of Some Metrics for Automatically
+  Evaluating Natural Language Generation Systems}.
+
+\bibitem{nlgsystem01}
+Ehud Reiter and Robert Dale.
+\newblock {Building Applied Natural Language Generation Systems}.
+\newblock {\em Cambridge University Press}, 1995.
+
+\bibitem{buildingNLG}
+Ehud Reiter and Robert Dale.
+\newblock {\em Building Natural Language Generation Systems}.
+\newblock Number ISBN 0-521-62036-8. The press syndicate of the University of
+  Cambridge, 1st edition, 2000.
+
+\bibitem{RussellNorvigAIBook3rd}
+Stuart~J. Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence - A Modern Approach}.
+\newblock Number ISBN 978-0-13-207148-2. Pearson Education, 3rd edition, 2010.
+
+\bibitem{evalmethods}
+Amanda Stent, Matthew Marge, and Mohit Singhai.
+\newblock {Evaluating Evaluation Methods for Generation in the Presence of
+  Variation}.
+
+\end{thebibliography}
