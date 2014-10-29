@@ -11,13 +11,12 @@
 
 \title{Natural Language Generation using Hidden Markov Model}
 \author{\hspace*{-0.5cm}\begin{tabular}{cccc}
-Akash Kumar Dhaka & Dario Vidas & Stefan Annell & Ummul Wara\\
-1990-02-26 & 1992-06-24 & 1987-09-30 & BIRTHDATE4 \\
-akashd@kth.se & vidas@kth.se & steann@kth.se & MAIL4@kth.se \\
+Akash Kumar Dhaka & Dario Vidas & Stefan Annell \\
+1990-02-26 & 1992-06-24 & 1987-09-30 \\
+akashd@kth.se & vidas@kth.se & steann@kth.se \\
 \includegraphics[width=0.13\linewidth]{akash} & 
 \includegraphics[width=0.13\linewidth]{dario} & 
-\includegraphics[width=0.13\linewidth]{stefan} & 
-\includegraphics[width=0.13\linewidth]{Alan_Turing_photo}
+\includegraphics[width=0.13\linewidth]{stefan} 
 \end{tabular}} 
 % Normally there will not be any pictures but we want
 % these so that we can connect faces to names in the course
@@ -29,7 +28,7 @@ akashd@kth.se & vidas@kth.se & steann@kth.se & MAIL4@kth.se \\
 \setlength{\headheight}{15pt}
 \fancyhf{}
 \lhead{DD2380 ai14} % DO NOT REMOVE!!!!
-\rhead{A.K. Dhaka, D. Vidas, S. Annell, U. Wara} %% UPDATE WITH YOUR NAMES
+\rhead{A.K. Dhaka, D. Vidas, S. Annell} %% UPDATE WITH YOUR NAMES
 
 \begin{document}
 
@@ -45,8 +44,7 @@ the field is far from being fully explored. In this paper, we propose an idea of
 building a text generator based on Hidden Markov Model (HMM). HMM allows us to
 append words in a sentence that depend on a whole sequence until that point,
 unlike other methods, such as n-gram, which use only a certain number of words
-to predict the next one. HMM parameters are additionally optimized using
-Genetic Algorithm (GA). This type of text generators may outperform simple ones
+to predict the next one. . This type of text generators may outperform simple ones
 and match the performance of a more complex generators.
 \end{abstract}
 
@@ -65,29 +63,28 @@ forecast generation, summarize statistical data extracted from a database and
 describing chains of reasoning performed by a system~\cite{nlgsystem01}.
 
 This paper is about designing, implementing and comparing different methods of
-generating news based on topic headlines that are given as an input to the
-system. The news should be a few sentences long and be relevant to the topic,
-not necessarily correct information but still relevant. The knowledge base is
-going to be built up from news articles that in some way teaches our system.
-Which means that Natural Language Processing (NLP) needs to be implemented for
-building the database and tagging / structuring the words, allowing our system
+generating random sentences when fed in by a specific corpus. The generated 
+sentences should be as correct as possible grammatically and semantically.
+Which means that Natural Language Processing (NLP) needs to be implemented
+for building the corpus and tagging / structuring the words, allowing our system
 to form sentences that are meaningful and semantically as correct as possible.
+The corpora used were of different sizes to test our system properly.
 
 This is very interesting field of research and a good topic to study because it
 incorporates several complicated tasks that are useful in wide variety of
 applications. First of all, it is very difficult for a computer to understand
-the content of a text, there has been a lot of work done in this field and we
-will apply one of few different methods for this. It is also hard for a computer
-to construct sentences that are correct semantically because of the
-complexity of a natural languages, such as English as mentioned in
-\cite{nlgScratch}. This fact raises another problem, which is the infinite
-number of combinations of words. Furthermore, the aggravating circumstance that
-the language (both dictionary and the grammar) is continuously evolving, makes
-it even harder to define a specific set of rules that apply all the time,
-considering that our datasets (news) are written by numerous authors and in
+the content of a text, there has been a lot of work done in this field. 
+It is also hard for a computer to construct sentences that are correct
+semantically because of the complexity of a natural languages, such as English
+as mentioned in \cite{nlgScratch}. The evaluation of how correct a sentence is 
+also very challenging and a field in its own. This fact raises another problem, 
+which is the infinite number of combinations of words. Furthermore, the 
+aggravating circumstance that the language (both dictionary and the grammar)
+ is continuously evolving, makes it even harder to define a specific set of rules 
+that apply all the time, considering that our datasets (news) are written by numerous authors and in
 different time instants. NLG systems broadly have three subcomponents:text
 planning, sentence planning and surface realisation.
-In text planning, content and target of the text are detremined, During sentence
+In text planning, content and target of the text are determined, During sentence
 planning, syntactic and lexical means are ascertained whereas in realisation, 
 actual words are strung together to give form to the basic structure which comes out
 of sentence planning. 
@@ -102,8 +99,10 @@ It is very hard for a computer to communicate with a human since the language is
 very complex and it is hard to replicate and the language is one of the big
 borders between computers and humans which makes this field of research very
 interesting. The method that we are presenting is a new and interesting way to
-generate text focused on a topic using Hidden Markov Models (HMM) and genetic
-algorithm.
+generate text focused on a topic using Hidden Markov Models (HMM). We used
+three variants of HMM for this taks- unsupervised HMM, supervised HMM and 
+chunked supervised HMM. We also generated sentenced by trigrams and evaluated
+the performance of all the generators with human written sentences.
 
 \subsection{Outline}
 In Section~\ref{sec:relwork} previous work is recognized and the papers we have
@@ -156,31 +155,26 @@ They both discuss the pros and cons of the evaluation systems and suggests that 
 
 \subsection{Hidden Markov Models}
 
-An n-gram models have been used for the task of NLG~\cite{nlgngram}. n-gram models use the
+n-gram models have been used for the task of NLG~\cite{nlgngram}. n-gram models use the
 statistical property of co-occurrances to calculate the most likely word to
 appear given previous (n-1) grams. Intuition would tell us that a higher n gram
 model will perform better than a lower one as the samples will be fewer and are
 more likely to be semantically correct but will be much more computationally
-intensive. But there are  also some problems with n-gram models. They perform
-the task of surface-realisation without having to need any grammar or knowledge
-of semantics. Also in case where there are several sentences and the idea has to
-flow with the sentences, they will perform poorly. Our objective is to give
-better performance than a generator using a trigram.
+intensive. We have used trigrams as one of the generation techniques, But there 
+are  also some problems with n-gram models.One of them 
+is of the sparse data combinations as n becomes greater. The other problem which will be 
+verified in the results section is that of non-randomness. Trigram tends to 
+pick full sentences out of the corpus and that is where HMMs perform much
+better over trigrams. This problem with ngrams gets aggravated if the training
+corpus is small in size. 
 
-This task mainly contains two parts: determining what to say and how to say.
-The information decision (what to say) part can be done by using a statistical
-method on the training set to determine the most commonly occurring noun words
-with the given keywords. For example a keyword like "INDIA" can have
-"population", "Gandhi", "Himalayas", "poor" as the set of possible information
-generation candidates.
 
 We propose to use HMMs for the surface generalisation task (how to say). HMMs
 have been used with very good results in the fields of speech recognition and
-also in NLU (Natural Language Understanding)~\cite{hmmsr}. The idea of HMM in this work is to
-do something like the inverse of what POS Tagging does. In POS Tagging, an input
-string of words is mapped to a hidden sequence of semantic POS tags. Here, the
-sequence of POS tags can be determined by training it with data from various
-news articles like Guardian, BBC, CNN. The POS Tags then can serve as the
+also in NLU (Natural Language Understanding)~\cite{hmmsr}. The idea of HMM in this
+work is todo something like the inverse of what POS Tagging does. In POS Tagging, an input
+string of words is mapped to a hidden sequence of semantic POS tags. We used
+the default POS tagger of the nltk package. The POS Tags then can serve as the
 observations in the HMM model and the words as the hidden states.  With the
 different candidates for information, they can be trained by a HMM model and
 then evaluated by a function which will select the best candidate out of them.
@@ -188,10 +182,14 @@ With the different candidates for information, they can be trained by a HMM
 model and then evaluated by a function which will select the best candidate
 out of them.
 
-We also think to train the model parameters by a genetic algorithm to introduce
-more randomness and to avoid problems of local minima.
-To have more variation we intend to use WORDNET, so we can have multiple ways of
-generating sentences, all having the same meaning.
+In the supervised HMMs, the POS tags are used as the states and the words of
+the corpus are treated as the emissions. NLTK's default POS Tagger was used 
+for evaluating the POS tags in a sentence. The state-transition matrix and 
+emission matrix are then calculated with them.
+In the chunked HMMs, we try to enrich the emissions with a bit more information
+about the semantics of a sentence and thus add chunks with POS tags as emissions.
+
+
 
 
 \subsection {Performance measures for experiments}
@@ -216,8 +214,15 @@ the help of others to reduce the bias.
 Metric evaluations are based on software evaluations of generated text. They are
 more objective than human ratings, but also less reliable. Most evaluators
 compare generated text with texts written by people to compute the score. In our
-project, we are going to use one or more of the following metric evaluators:
-BLEU, NIST, METEOR; which ever proves to be most reliable~\cite{autoeval}.
+project, we used three evaluators- BLEU, Linguitic checker and POS sequence checker~\cite{autoeval}.
+ADD TEXT ABOUT BLEU HERE STEFAN!!
+For evaluating the grammatical correctness of the generated sentence, we used the
+open source tool LANGUAGE TOOL. This software is quite clean and robust. It gives 
+all the possible errors and their description when it is fed with a sentence. The 
+goodness of a sentence can be evaluated by using the formula: 
+
+The third test used for evaluation is the POS tag sequence checker. This measure 
+gives us a good estimate of how correct the sentence is correct semantically.
 
 \subsection {Measure success of the project work or approach}
 
