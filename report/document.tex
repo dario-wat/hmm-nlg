@@ -6,10 +6,13 @@
 \usepackage{fancyhdr}
 \usepackage{indentfirst}
 \usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \graphicspath{{pictures/}}
 
-\title{Natural Language Generation using Hidden Markov Model}
+\title{A Comparison of N-gram and Hidden Markov Model Text Generators}
 \author{\hspace*{-0.5cm}\begin{tabular}{cccc}
 Akash Kumar Dhaka & Dario Vidas & Stefan Annell \\
 1990-02-26 & 1992-06-24 & 1987-09-30 \\
@@ -150,11 +153,11 @@ They both discuss the pros and cons of the evaluation systems and suggests that 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{My method}
+\section{Hidden Markov Model}
 \label{sec:method}
 
-\subsection{Hidden Markov Models}
-
+\subsection{N-gram}
+***I DIDNT MODIFY THIS***
 n-gram models have been used for the task of NLG~\cite{nlgngram}. n-gram models use the
 statistical property of co-occurrances to calculate the most likely word to
 appear given previous (n-1) grams. Intuition would tell us that a higher n gram
@@ -169,27 +172,84 @@ better over trigrams. This problem with ngrams gets aggravated if the training
 corpus is small in size. 
 
 
-We propose to use HMMs for the surface generalisation task (how to say). HMMs
-have been used with very good results in the fields of speech recognition and
-also in NLU (Natural Language Understanding)~\cite{hmmsr}. The idea of HMM in this
-work is todo something like the inverse of what POS Tagging does. In POS Tagging, an input
-string of words is mapped to a hidden sequence of semantic POS tags. We used
-the default POS tagger of the nltk package. The POS Tags then can serve as the
-observations in the HMM model and the words as the hidden states.  With the
-different candidates for information, they can be trained by a HMM model and
-then evaluated by a function which will select the best candidate out of them.
-With the different candidates for information, they can be trained by a HMM
-model and then evaluated by a function which will select the best candidate
-out of them.
+\subsection{Hidden Markov Models}
+Hidden Markov Model (HMM) is a tool for modelling time series data.
+It can be presented as a dynamic Bayesian network. In HMM, ``hidden''
+stands for the states which are not directly visible to the observer~\cite{hmm}.
+A certain HMM is fully defined by its:
+\begin{itemize}
+  \item transition matrix $A$,
+  \item emission matrix $B$,
+  \item initial state probability distribution $\pi$.
+\end{itemize}
 
-In the supervised HMMs, the POS tags are used as the states and the words of
-the corpus are treated as the emissions. NLTK's default POS Tagger was used 
-for evaluating the POS tags in a sentence. The state-transition matrix and 
-emission matrix are then calculated with them.
-In the chunked HMMs, we try to enrich the emissions with a bit more information
-about the semantics of a sentence and thus add chunks with POS tags as emissions.
+We propose to use HMMs for the surface generalisation task. HMMs have been used
+with very good results in the fields of speech recognition and also in NLU
+(Natural Language Understanding)~\cite{hmmsr}. The idea of HMM in this work is
+to do something similar to the inverse of what POS Tagging does. In POS
+Tagging, an input string of words is mapped to a hidden sequence of semantic POS
+tags. The POS Tags then can serve as the hidden states in the HMM model and the
+words as the observations. ***WRITE SOMETHING NICE HERE***
+Algorithm~\ref{alg:hmm}.
 
+In our work, we have used three types of HMMs for the text generation:
+\textit{supervised, supervised with text chunking and unsupervised}.
 
+\begin{algorithm}
+\caption{HMM Text Generation Algorithm}
+\label{alg:hmm}
+\begin{algorithmic}[1]
+	\State $sequence \gets \emptyset$
+	\State $state \gets \Call{pickRandomState}$
+	\Repeat
+		\State $emission \gets \Call{generateEmission}{state}$
+		\State $sequence \gets \Call{append}{sequence, emission}$
+		\State $state \gets \Call{stateTransition}{state}$
+	\Until{enough} \\
+	\Call{output}{sequence}
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Supervised HMMs}
+\label{sec:suphmm}
+In the supervised HMMs, the POS tags are used as the states and the words and
+punctuation of the corpus are treated as the emissions. NLTK's~\footnote{Natural
+Language Toolkit - Open source library for NLG written in python} default POS Tagger was
+used for evaluating the POS tags in a sentence. The state-transition matrix and
+emission matrix are then computed with them, using the supervised learning
+algorithm. The algorithm is purely statistical and is described by the
+following equations:
+\begin{align*}
+A_{ij} = \frac{S_{ij}}{\sum_{k} S_{ik}} \qquad
+B_{i}(w) = \frac{E_{i}(w)}{\sum_{w'} E_{i}(w')} \qquad
+\pi_{i} = \frac{S_{i}}{\sum_{k} S_{k}}
+\end{align*}
+where $S_{ij}$ is the number of occurrences of transitions from state $i$ to
+state $j$, $E_{i}(w)$ is the number of occurrences of the observation $w$ in the
+state $i$ and $S_{i}$ is the number of occurrences of state $i$.
+
+\subsubsection{Supervised HMMs with Text Chunking}
+This type of HMM is an extension of a supervised HMM descibed in
+section~\ref{sec:suphmm}. Text chunking is a method of grouping words in a
+sentence, in a way that they produce semantical units. For example, the sentence
+\textit{``The quick brown fox jumps over the lazy dog.''} gets splitted into the
+following chunks: \textit{``The quick brown fox'', ``jumps'', ``over'', ``a lazy
+dog'', ``.''}. It can be clearly seen now that \textit{``The quick brown fox''}
+is a single semantical unit.
+
+In the chunked HMMs, we try to enrich the emissions with more
+information about the semantics of a sentence and thus add chunk tags with POS
+tags as hidden states. We also add chunks as emissions, which have previously
+consisted of only words and punctuation. The learning algorithm is exactly the
+same as the one used for the regular supervised HMMs.
+
+\subsubsection{Unsupervised HMMs}
+Unsupervised HMMs differ from supervised ones in several ways. The states are
+implicit, the learner only knows the number of states but not what they
+represent. The algorithm used for learning is Baum-Welch, which is a special
+case of expectation maximization algorithm. Using this algorithm, we let the
+learner find the patterns in the data and infer the states itself. The emissions
+in unsupervised HMMs are the same as the ones in supervised HMMs.
 
 
 \subsection {Performance measures for experiments}
