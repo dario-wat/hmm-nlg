@@ -47,8 +47,13 @@ the field is far from being fully explored. In this paper, we propose an idea of
 building a text generator based on Hidden Markov Model (HMM). HMM allows us to
 append words in a sentence that depend on a whole sequence until that point,
 unlike other methods, such as n-gram, which use only a certain number of words
-to predict the next one. . This type of text generators may outperform simple ones
-and match the performance of a more complex generators.
+to predict the next one. We implemented three different types of HMM models for
+generation- unsupervised, supervised and chunked supervised. Three different evaluators 
+were used for comparing the performance of the generators with human written-sentences. 
+Their respective performace suggested to us that HMM generators work better than 
+trigram generator over a small corpus and gives much more random texts whereas 
+the latter generates better sentences when fed in with a large corpus.
+
 \end{abstract}
 
 
@@ -83,9 +88,9 @@ as mentioned in \cite{nlgScratch}. The evaluation of how correct a sentence is
 also very challenging and a field in its own. This fact raises another problem, 
 which is the infinite number of combinations of words. Furthermore, the 
 aggravating circumstance that the language (both dictionary and the grammar)
- is continuously evolving, makes it even harder to define a specific set of rules 
-that apply all the time, considering that our datasets (news) are written by numerous authors and in
-different time instants. NLG systems broadly have three subcomponents:text
+is continuously evolving, makes it even harder to define a specific set of rules 
+that apply all the time, considering that our datasets (news) are written by numerous
+authors and in different time instants. NLG systems broadly have three subcomponents:text
 planning, sentence planning and surface realisation.
 In text planning, content and target of the text are determined, During sentence
 planning, syntactic and lexical means are ascertained whereas in realisation, 
@@ -105,7 +110,7 @@ interesting. The method that we are presenting is a new and interesting way to
 generate text focused on a topic using Hidden Markov Models (HMM). We used
 three variants of HMM for this taks- unsupervised HMM, supervised HMM and 
 chunked supervised HMM. We also generated sentenced by trigrams and evaluated
-the performance of all the generators with human written sentences.
+the performance of all the generators with human written sentences using evaluators.
 
 \subsection{Outline}
 In Section~\ref{sec:relwork} previous work is recognized and the papers we have
@@ -189,7 +194,7 @@ with very good results in the fields of speech recognition and also in NLU
 to do something similar to the inverse of what POS Tagging does. In POS
 Tagging, an input string of words is mapped to a hidden sequence of semantic POS
 tags. The POS Tags then can serve as the hidden states in the HMM model and the
-words as the observations. ***WRITE SOMETHING NICE HERE***
+words as the observations. HMMs 
 Algorithm~\ref{alg:hmm}.
 
 In our work, we have used three types of HMMs for the text generation:
@@ -231,7 +236,10 @@ state $i$ and $S_{i}$ is the number of occurrences of state $i$.
 \subsubsection{Supervised HMMs with Text Chunking}
 This type of HMM is an extension of a supervised HMM descibed in
 section~\ref{sec:suphmm}. Text chunking is a method of grouping words in a
-sentence, in a way that they produce semantical units. For example, the sentence
+sentence, in a way that they produce semantical units. It has been successfully 
+applied for the task of shallow parsing~\cite{hmmchunk}. The idea is to enrich the
+observations with information on the parts(chunks) of a sentence like Noun phrase(NP)
+and verb phrase(VP). For example, the sentence
 \textit{``The quick brown fox jumps over the lazy dog.''} gets splitted into the
 following chunks: \textit{``The quick brown fox'', ``jumps'', ``over'', ``a lazy
 dog'', ``.''}. It can be clearly seen now that \textit{``The quick brown fox''}
@@ -258,7 +266,7 @@ As in other scientific fields, it is crucial to test how well our systems,
 modules and algorithms work. This type of performance measure is called
 evaluation. There are three techniques of evaluating NLG systems: task-based,
 human ratings and metrics~\cite{evalnlg}. In our project we are going to use
-human ratings and metric evaluations.
+metric evaluations.
 
 Evaluation gives as an output the ``goodness'' of a sentence or a text. The
 ``goodness'' is defined by three characteristics: fluency, adequateness and
@@ -317,7 +325,11 @@ project progress for the purpose of completing the task in time.
 \subsection{Implementation}
 \label{sec:impl}
 
-Implementation will be done shortly.
+We have used NLTK~\cite{nltk} very extensively. We used the built in brown
+corpus and POS tagger trained on UPenn datasets. 
+For the evaluation, the native implementation of BLEU in NLTK was used. 
+For the linguistic checker evaluator, the open source tool LANGUAGE TOOL with a python
+wrapper was used.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
