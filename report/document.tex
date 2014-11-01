@@ -338,28 +338,29 @@ wrapper was used.
 
 \subsection{Experimental setup}
 
-When performing the tests, we first generated around 20 sentences with each of our four systems, then we ran them through the our
-evaluation methods which generated a score for each of the systems. We used human written sentences to have as a
-reference, which were either written manually or pulled from a news article. We also generated a score for the human tests.
-We then plotted the results to get a good overview of our results.
+We made two sets of tests with two different corpus as training data which were very different in length.
+The longer corpus we used was a H.C. Andersen book, The Emperors new Cloths, which was about 60 000 words. 
+The short corpus was information about zebras that was pulled from Wikipedia which was about 2000 words.
+When performing the tests around 20 sentences were generated for each corpus with each of the four systems and also 20 human written sentences were produced. 
+Then they were evaluated with the automated evaluation methods which generated a score for each of the systems.
+The score of the human written sentences was used as a performance reference. Then the results were plotted and compared
+towards each other and the manually generated scores.
 \subsection{Experiment}
-
 \begin{figure}
 \centering
 \includegraphics[width=0.8\linewidth]{resultsShort}
 \includegraphics[width=0.8\linewidth]{results}
-\caption{Experimental results when generating sentences with the four tested systems for a long corpus and a short corpus respectively, 
-using the three automated evaluation methods, and comparing it to the human results.}
+\caption{Experimental results when generating sentences with the four tested systems for a long corpus and a short corpus respectively, using the three automated evaluation methods, and comparing it to the human results.}
 \label{fig:longresults}
 \end{figure}
 
-As seen from the xxx the Bleu results are all very close to the human results. The human results are used as a
+As seen from the xxx the Bleu results are all very close to the human results. Since human results are used as a
 benchmark value on what score a good sentence should get and since all our results are close to the human results
 we found that they are to unreliable  and because of this, we disregarded the Bleu score from our results.
 
-In the long corpus xxx, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the grammatical and the semantics of the sentence. The HMM systems were all pretty similar, but the Supervised HMM performed
+In the long corpus xxx, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the
+grammatical and the semantics of the sentence. The HMM systems were all pretty similar, but the Supervised HMM performed
 a little bit better on the POS then the other systems.
-
 
 The short corpus gave a lower score for trigrams and a higher score for all the HMM systems, where the supervised was the best.
 Overall the score was higher and closer to the human score with a shorter corpus.
@@ -375,10 +376,20 @@ A problem that we could see when generating sentences with all our HMM systems w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
+We found that it is very hard to generate a sentence. When having a open sentence that's not constricted at all, 
+the possible ways to build a sentence are almost endless.
+The Trigram system that we designed worked better then the HMM systems for a long corpus, but for the short corpus
+the trigrams just copied whole sentences from the corpus thus performing very bad. 
+The HMM got a better score for the shorter corpus probably because of the lesser occurrence of punctuation and citation marks.
+One of the reasons why we didn't perform better could have been that we needed to tune the HMM's better and have more
+testdata. And we also probably would need some kind of filter to be able to filter the data either that we input to the HMM's or
+output from the HMM's.
+When we tried to improve our HMM results by using chunking, it did not improve performance as much that we would 
+have hoped for and we are not sure why.
+
+NLG is a hard area, there are no trivial method of generating sentences that will be grammatically and semantically correct.
+But it is a very interesting research area, and is a research field that needs to be mastered before the computers will be seamlessly integrated with human society.
 \label{sec:summary}
-The results from the Bleu
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{ref}
