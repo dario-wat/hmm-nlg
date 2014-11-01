@@ -66,14 +66,14 @@ the latter generates better sentences when fed in with a large corpus.
 \label{sec:intro}
 Natural Language Generation(NLG) is the field of generating natural language for
 a computer from a knowledge base or some information that the system can
-understand. Some fields where the NLG is beeing applied are weather
+understand. Some fields where the NLG is being applied are weather
 forecast generation, summarize statistical data extracted from a database and
 describing chains of reasoning performed by a system~\cite{nlgsystem01}.
 
 This paper is about designing, implementing and comparing different methods of
 generating random sentences when fed in by a specific corpus. The generated 
-sentences should be as correct as possible grammatically and semantically.
-Which means that Natural Language Processing (NLP) needs to be implemented
+sentences should be as correct as possible grammatically and semantically,
+which means that Natural Language Processing (NLP) needs to be implemented
 for building the corpus and tagging / structuring the words, allowing our system
 to form sentences that are meaningful and semantically as correct as possible.
 The corpora used were of different sizes to test our system properly.
@@ -81,12 +81,11 @@ The corpora used were of different sizes to test our system properly.
 This is very interesting field of research and a good topic to study because it
 incorporates several complicated tasks that are useful in wide variety of
 applications. First of all, it is very difficult for a computer to understand
-the content of a text, there has been a lot of work done in this field. 
+the content of a text, although there has been a lot of work done in this field. 
 It is also hard for a computer to construct sentences that are correct
 semantically because of the complexity of a natural languages, such as English
 as mentioned in \cite{nlgScratch}. The evaluation of how correct a sentence is 
-also very challenging and a field in its own. This fact raises another problem, 
-which is the infinite number of combinations of words. Furthermore, the 
+also very challenging and a field in its own. Furthermore, the 
 aggravating circumstance that the language (both dictionary and the grammar)
 is continuously evolving, makes it even harder to define a specific set of rules 
 that apply all the time, considering that our datasets (news) are written by numerous
@@ -133,11 +132,11 @@ Goldman and Davey, where they helped to define the main problems in NLG
 as explained in \cite[p.~19-20]{buildingNLG}, where they also mention that NLG
 started to be researched allot during 1980's by people like McKeown and Appelt
 that had a big impact on how the subsequent research was going to be performed on NLG.
-The field had a big increase in the 1990's where allot of real-world applications were made,
+The field had a big increase in the 1990's where a lot of real-world applications were made,
 like the weather forecast system FOG.
 
 The paper Building Applied Natural Language Generation
-Systems~\cite{nlgsystem01} is about the architecture and how to structure your
+Systems~\cite{nlgsystem01} is about the architecture and how to structure a
 NLG system when designing it. They describe six main tasks that needs to be
 performed when generating a text; content determination, discourse planning,
 sentence aggregation, lexicalization, referring expression generation and
@@ -153,6 +152,9 @@ to be very similar to POS (part of speech) tagging. States represent words, and
 state sequences, word phrases. The model is designed from the corpus data
 using ABL algorithm and it learns using the Baum-Welch algorithm.
 
+The paper Shallow Parsing Using Specialized HMMs~\cite{hmmchunk} uses the technique
+of chunking for parsing a sentence, which we have used in one of our HMM generator.
+
 These papers  ~\cite{poseval} ~\cite{bleueval} researched some different methods for evaluating Natural Language Generation systems, by comparing automated methods and human evaluation methods. Where  ~\cite{bleueval} propose methods like Bleu, NIST and Rogue which looks at the words of the generated sentence, and compares it to a reference. ~\cite{poseval} Suggests a pos tagging method, that breaks up the sentences into POS tags, and compares it to a big reference corpus.
 They both discuss the pros and cons of the evaluation systems and suggests that a combination of automated methods should be used, since the different automated methods covers different parts of the text.
 
@@ -162,14 +164,10 @@ They both discuss the pros and cons of the evaluation systems and suggests that 
 \label{sec:method}
 
 \subsection{N-gram}
-***I DIDNT MODIFY THIS***
 n-gram models have been used for the task of NLG~\cite{nlgngram}. n-gram models use the
 statistical property of co-occurrances to calculate the most likely word to
-appear given previous (n-1) grams. Intuition would tell us that a higher n gram
-model will perform better than a lower one as the samples will be fewer and are
-more likely to be semantically correct but will be much more computationally
-intensive. We have used trigrams as one of the generation techniques, But there 
-are  also some problems with n-gram models.One of them 
+appear given previous (n-1) grams. We have used trigrams as one of the generation techniques,
+But there are  also some problems with n-gram models. One of them 
 is of the sparse data combinations as n becomes greater. The other problem which will be 
 verified in the results section is that of non-randomness. Trigram tends to 
 pick full sentences out of the corpus and that is where HMMs perform much
@@ -283,44 +281,22 @@ Metric evaluations are based on software evaluations of generated text. They are
 more objective than human ratings, but also less reliable. Most evaluators
 compare generated text with texts written by people to compute the score. In our
 project, we used three evaluators- BLEU, Linguitic checker and POS sequence checker~\cite{autoeval}.
-ADD TEXT ABOUT BLEU HERE STEFAN!!
+BLEU (Bilingual Evaluation Understudy) is an algorithm for evaluating the quality of a 
+machine-translated text from one natural language to other. The way we have used it 
+for our task is that, we compare the generated sentence with all the sentences of the
+corpus in pairs(bigram) and then calculate the maximum score out of it.
+
 For evaluating the grammatical correctness of the generated sentence, we used the
-open source tool LANGUAGE TOOL. This software is quite clean and robust. It gives 
-all the possible errors and their description when it is fed with a sentence. The 
-goodness of a sentence can be evaluated by using the formula: 
+open source tool named LANGUAGE TOOL. This software is quite clean and robust. It gives 
+all the possible errors and their description when it is fed with a sentence. The number 
+of errors in a sentence per the number of words in a sentence can be used as a measure
+for evaluating the grammatical correctness of a sentence.
 
 The third test used for evaluation is the POS tag sequence checker. This measure 
-gives us a good estimate of how correct the sentence is correct semantically.
-
-\subsection {Measure success of the project work or approach}
-
-The main task of the project is to successfully implement HMM text generator.
-Besides HMM text generator, we are also going to implement simple n-gram
-generators such as bigram and trigram. To measure success of the project
-approach, we are going to use performance measures listed above, as well as
-comparison between HMM and n-gram generator. If our hypothesis proves to be
-true, HMM will perform better than bigram and trigram.
-
-\subsection {Measure the progress during the course of\\ the project}
-
-The project is divided into several stages. In the beginning, we will set the
-hypothesis and elaborate details regarding the same. By analyzing collected
-research papers, we will make decisions regarding implementation details,
-improvements and alterations, and also define performance expectations of our
-approach.
-
-Second stage is the implementation. During this stage, we will implement bigram,
-trigram and HMM text generators (and genetic algorithm for HMM optimization if
-needed). In the same time we will also test our application to ensure algorithm
-correctness.
-
-Finally, we will run experiments (evaluations) mentioned above and alter
-parameters accordingly to achieve better results.
-
-During the course of the project, we will record our progress based on the
-project plan described above. Prediction of the time consumption will be made
-for each of the stages. Using those predictions, we will adjust the pace of the
-project progress for the purpose of completing the task in time.
+gives us a good estimate of how correct the sentence is correct semantically. The idea
+is that a good sentence will have a particular sequence of POS tags. So, the similarity
+between a generated sentence is calculated with all the sentences of a corpus and the 
+maximum score is taken as the final score. 
 
 \subsection{Implementation}
 \label{sec:impl}
@@ -357,6 +333,9 @@ towards each other and the manually generated scores.
 As seen from the xxx the Bleu results are all very close to the human results. Since human results are used as a
 benchmark value on what score a good sentence should get and since all our results are close to the human results
 we found that they are to unreliable  and because of this, we disregarded the Bleu score from our results.
+As we can see the human generated sentences do not always have a score equal to 1 but close to it, which
+highlights the shortcomings of the evaluators we have used and also because the evaluators have been trained on
+different corpora.
 
 In the long corpus xxx, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the
 grammatical and the semantics of the sentence. The HMM systems were all pretty similar, but the Supervised HMM performed
@@ -377,7 +356,8 @@ A problem that we could see when generating sentences with all our HMM systems w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
 We found that it is very hard to generate a sentence. When having a open sentence that's not constricted at all, 
-the possible ways to build a sentence are almost endless.
+the possible ways to build a sentence are almost endless. Using a story as a corpus and generating sentences 
+is even more difficult as it needs to model the linguistic tools and there are much more degrees of freedom.
 The Trigram system that we designed worked better then the HMM systems for a long corpus, but for the short corpus
 the trigrams just copied whole sentences from the corpus thus performing very bad. 
 The HMM got a better score for the shorter corpus probably because of the lesser occurrence of punctuation and citation marks.
