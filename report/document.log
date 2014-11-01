@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.2)  28 OCT 2014 20:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.2)  1 NOV 2014 17:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -190,37 +190,132 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip52
 )
-(./document.aux)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip53
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen111
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen112
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count98
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count99
+\leftroot@=\count100
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count101
+\DOTSCASE@=\count102
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count103
+\c@MaxMatrixCols=\count104
+\dotsspace@=\muskip11
+\c@parentequation=\count105
+\dspbrk@lvl=\count106
+\tag@help=\toks16
+\row@=\count107
+\column@=\count108
+\maxfields@=\count109
+\andhelp@=\toks17
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks18
+\multlinegap=\skip54
+\multlinetaggap=\skip55
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count110
+\float@exts=\toks20
+\float@box=\box28
+\@float@everytoks=\toks21
+\@floatcapt=\box29
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks22
+\c@algorithm=\count111
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count112
+\c@ALG@rem=\count113
+\c@ALG@nested=\count114
+\ALG@tlm=\skip56
+\ALG@thistlm=\skip57
+\c@ALG@Lnr=\count115
+\c@ALG@blocknr=\count116
+\c@ALG@storecount=\count117
+\c@ALG@tmpcounter=\count118
+\ALG@tmplength=\skip58
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (./document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count98
-\scratchdimen=\dimen111
-\scratchbox=\box26
-\nofMPsegments=\count99
-\nofMParguments=\count100
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count101
-\MPscratchDim=\dimen112
-\MPnumerator=\count102
-\makeMPintoPDFobject=\count103
-\everyMPtoPDFconversion=\toks16
+\scratchcounter=\count119
+\scratchdimen=\dimen120
+\scratchbox=\box30
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen121
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
+\everyMPtoPDFconversion=\toks24
 ) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -236,8 +331,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box27
-Package hyperref Info: Link coloring OFF on input line 34.
+\AtBeginShipoutBox=\box31
+Package hyperref Info: Link coloring OFF on input line 36.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -245,139 +340,193 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count104
+\c@section@level=\count125
 )
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
 
 (./document.out) (./document.out)
 \@outlinefile=\write3
 \openout3 = `document.out'.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 39.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 39.
 
-<pictures/akash.jpg, id=56, 529.98pt x 765.86125pt>
+<pictures/akash.jpg, id=4, 529.98pt x 765.86125pt>
 File: pictures/akash.jpg Graphic file (type jpg)
  <use pictures/akash.jpg>
-Package pdftex.def Info: pictures/akash.jpg used on input line 39.
+Package pdftex.def Info: pictures/akash.jpg used on input line 41.
 (pdftex.def)             Requested size: 50.7019pt x 73.26007pt.
 
-<pictures/dario.jpg, id=57, 683.55376pt x 963.6pt>
+<pictures/dario.jpg, id=5, 683.55376pt x 963.6pt>
 File: pictures/dario.jpg Graphic file (type jpg)
  <use pictures/dario.jpg>
-Package pdftex.def Info: pictures/dario.jpg used on input line 39.
+Package pdftex.def Info: pictures/dario.jpg used on input line 41.
 (pdftex.def)             Requested size: 50.7019pt x 71.4729pt.
 
-<pictures/stefan.jpg, id=58, 293.095pt x 428.60126pt>
+<pictures/stefan.jpg, id=6, 293.095pt x 428.60126pt>
 File: pictures/stefan.jpg Graphic file (type jpg)
-
-<use pictures/stefan.jpg>
-Package pdftex.def Info: pictures/stefan.jpg used on input line 39.
+ <use pictures/stefan.jpg>
+Package pdftex.def Info: pictures/stefan.jpg used on input line 41.
 (pdftex.def)             Requested size: 50.7019pt x 74.13652pt.
-
-<pictures/Alan_Turing_photo.jpg, id=59, 42.75975pt x 53.4798pt>
-File: pictures/Alan_Turing_photo.jpg Graphic file (type jpg)
-
-<use pictures/Alan_Turing_photo.jpg>
-Package pdftex.def Info: pictures/Alan_Turing_photo.jpg used on input line 39.
-(pdftex.def)             Requested size: 50.7019pt x 63.4157pt.
-
-Overfull \hbox (43.95894pt too wide) in paragraph at lines 39--39
- [][] 
- []
 
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- <./pictures/akash.jpg> <./pictures/dario.jpg> <./pictures/stefan.jpg> <./pictu
-res/Alan_Turing_photo.jpg>]
+ <./pictures/akash.jpg> <./pictures/dario.jpg> <./pictures/stefan.jpg>]
 
-LaTeX Warning: Citation `nlgsystem01' on page 2 undefined on input line 65.
+LaTeX Warning: Citation `nlgsystem01' on page 2 undefined on input line 66.
 
 
-LaTeX Warning: Citation `nlgScratch' on page 2 undefined on input line 83.
+LaTeX Warning: Citation `nlgScratch' on page 2 undefined on input line 82.
 
 [2
 
 ]
 
-LaTeX Warning: Citation `buildingNLG' on page 3 undefined on input line 126.
+LaTeX Warning: Reference `sec:relwork' on page 3 undefined on input line 111.
 
 
-LaTeX Warning: Citation `nlgsystem01' on page 3 undefined on input line 133.
+LaTeX Warning: Reference `sec:method' on page 3 undefined on input line 112.
 
 
-LaTeX Warning: Citation `hmmnlg' on page 3 undefined on input line 143.
+LaTeX Warning: Reference `sec:exps' on page 3 undefined on input line 115.
+
+
+LaTeX Warning: Reference `sec:summary' on page 3 undefined on input line 116.
+
+
+LaTeX Warning: Citation `buildingNLG' on page 3 undefined on input line 128.
+
+
+LaTeX Warning: Citation `nlgsystem01' on page 3 undefined on input line 135.
+
+
+LaTeX Warning: Citation `hmmnlg' on page 3 undefined on input line 145.
 
 [3]
 
-LaTeX Warning: Citation `poseval' on page 4 undefined on input line 149.
+LaTeX Warning: Citation `poseval' on page 4 undefined on input line 151.
 
 
-LaTeX Warning: Citation `bleueval' on page 4 undefined on input line 149.
+LaTeX Warning: Citation `bleueval' on page 4 undefined on input line 151.
 
 
-LaTeX Warning: Citation `bleueval' on page 4 undefined on input line 149.
+LaTeX Warning: Citation `bleueval' on page 4 undefined on input line 151.
 
 
-LaTeX Warning: Citation `poseval' on page 4 undefined on input line 149.
+LaTeX Warning: Citation `poseval' on page 4 undefined on input line 151.
 
 
-LaTeX Warning: Citation `nlgngram' on page 4 undefined on input line 159.
+LaTeX Warning: Citation `nlgngram' on page 4 undefined on input line 161.
 
 
-LaTeX Warning: Citation `hmmsr' on page 4 undefined on input line 179.
+LaTeX Warning: Citation `hmm' on page 4 undefined on input line 178.
 
-[4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 181.
 
-LaTeX Warning: Citation `evalnlg' on page 5 undefined on input line 202.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 181.
+ [4]
+
+LaTeX Warning: Citation `hmmsr' on page 5 undefined on input line 188.
 
 
-LaTeX Warning: Citation `evalmethods' on page 5 undefined on input line 207.
+LaTeX Warning: Reference `alg:hmm' on page 5 undefined on input line 193.
 
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 199.
 
-LaTeX Warning: Citation `autoeval' on page 5 undefined on input line 220.
+LaTeX Warning: Reference `sec:suphmm' on page 5 undefined on input line 233.
 
 [5]
 
+LaTeX Warning: Citation `evalnlg' on page 6 undefined on input line 260.
+
+
+LaTeX Warning: Citation `evalmethods' on page 6 undefined on input line 265.
+
+
+LaTeX Warning: Citation `autoeval' on page 6 undefined on input line 277.
+
+[6]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 230.
+(hyperref)                removing `\\' on input line 296.
+
+[7] <pictures/resultsShort.jpg, id=68, 969.6225pt x 689.57625pt>
+File: pictures/resultsShort.jpg Graphic file (type jpg)
+
+<use pictures/resultsShort.jpg>
+Package pdftex.def Info: pictures/resultsShort.jpg used on input line 337.
+(pdftex.def)             Requested size: 312.00119pt x 221.88947pt.
+
+<pictures/results.jpg, id=69, 971.63pt x 680.5425pt>
+File: pictures/results.jpg Graphic file (type jpg)
+
+<use pictures/results.jpg>
+Package pdftex.def Info: pictures/results.jpg used on input line 338.
+(pdftex.def)             Requested size: 312.00119pt x 218.52571pt.
 
 No file document.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 281.
-[6] [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 281.
- (./document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 281.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 281.
-Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 6DF1CC9B9625BDD4F67EE791EB2100FC;854.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
+[8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure.
+1}) has been already used, duplicate ignored
 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.376 \end{document}
+                     <./pictures/resultsShort.jpg> <./pictures/results.jpg>]
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
+ (./document.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
+
+
+Package rerunfilecheck Warning: File `document.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `document.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  B6D6D2F3F51BDEB2500C4F8C37343C72;1226.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 281.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
  ) 
 Here is how much of TeX's memory you used:
- 5283 strings out of 493117
- 78569 string characters out of 6135433
- 163862 words of memory out of 5000000
- 8700 multiletter control sequences out of 15000+600000
- 6978 words of font info for 25 fonts, out of 8000000 for 9000
+ 6530 strings out of 493117
+ 94744 string characters out of 6135433
+ 184532 words of memory out of 5000000
+ 9888 multiletter control sequences out of 15000+600000
+ 12018 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,43p,508b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,16n,43p,508b,395s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on document.pdf (7 pages, 298719 bytes).
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on document.pdf (10 pages, 483949 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 145 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

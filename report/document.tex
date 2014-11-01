@@ -292,6 +292,7 @@ generators such as bigram and trigram. To measure success of the project
 approach, we are going to use performance measures listed above, as well as
 comparison between HMM and n-gram generator. If our hypothesis proves to be
 true, HMM will perform better than bigram and trigram.
+
 \subsection {Measure the progress during the course of\\ the project}
 
 The project is divided into several stages. In the beginning, we will set the
@@ -323,18 +324,47 @@ Implementation will be done shortly.
 \section{Experimental results}
 \label{sec:exps}
 
-The result of our experiments, will be written when we have done the implementation.
+\subsection{Experimental setup}
+
+When performing the tests, we first generated around 20 sentences with each of our four systems, then we ran them through the our
+evaluation methods which generated a score for each of the systems. We used human written sentences to have as a
+reference, which were either written manually or pulled from a news article. We also generated a score for the human tests.
+We then plotted the results to get a good overview of our results.
+\subsection{Experiment}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{resultsShort}
+\includegraphics[width=0.8\linewidth]{results}
+\caption{Experimental results when generating sentences with the four tested systems for a long corpus and a short corpus respectively, 
+using the three automated evaluation methods, and comparing it to the human results.}
+\label{fig:longresults}
+\end{figure}
+
+As seen from the xxx the Bleu results are all very close to the human results. The human results are used as a
+benchmark value on what score a good sentence should get and since all our results are close to the human results
+we found that they are to unreliable  and because of this, we disregarded the Bleu score from our results.
+
+In the long corpus xxx, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the grammatical and the semantics of the sentence. The HMM systems were all pretty similar, but the Supervised HMM performed
+a little bit better on the POS then the other systems.
 
 
-\subsection{Experiemntal setup}
+The short corpus gave a lower score for trigrams and a higher score for all the HMM systems, where the supervised was the best.
+Overall the score was higher and closer to the human score with a shorter corpus.
+The results of the trigrams here is quite deceiving, since the sentences are not true random it is basically only a copy of the 
+corpus. Which is also the nature of trigrams when dealing with a shorter corpus. So even tho the results look ok, the sentences
+aren't very good since it is not random.
 
-The system design will be presented when the setup is done.
+The chunking HMM system were introduced to increase the performance of the supervised HMM score. But even tho the
+testing on the short corpus gives a better result then the long corpus the chunking HMM still performs worse then the 
+supervised HMM.
+A problem that we could see when generating sentences with all our HMM systems was that it generated way to many punctuations and citations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
 \label{sec:summary}
-To be written later.
+The results from the Bleu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
