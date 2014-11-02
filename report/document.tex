@@ -99,7 +99,7 @@ of sentence planning.
 It is also preferred if the results are benchmarked in some systematical way,
 either manually (which is not preferred), semi-manually where the system might
 give suggestions and the operator help the computer or it is done completely
-automated (which is also quite hard).
+automated.
 
 
 \subsection{Contribution}
@@ -108,7 +108,7 @@ very complex and it is hard to replicate and the language is one of the big
 borders between computers and humans which makes this field of research very
 interesting. The method that we are presenting is a new and interesting way to
 generate text focused on a topic using Hidden Markov Models (HMM). We used
-three variants of HMM for this taks- unsupervised HMM, supervised HMM and 
+three variants of HMM for this task: unsupervised HMM, supervised HMM and 
 chunked supervised HMM. We also generated sentenced by trigrams and evaluated
 the performance of all the generators with human written sentences using evaluators.
 
@@ -156,8 +156,16 @@ using ABL algorithm and it learns using the Baum-Welch algorithm.
 The paper Shallow Parsing Using Specialized HMMs~\cite{hmmchunk} uses the technique
 of chunking for parsing a sentence, which we have used in one of our HMM generator.
 
-These papers  ~\cite{poseval} ~\cite{bleueval} researched some different methods for evaluating Natural Language Generation systems, by comparing automated methods and human evaluation methods. Where  ~\cite{bleueval} propose methods like Bleu, NIST and Rogue which looks at the words of the generated sentence, and compares it to a reference. ~\cite{poseval} Suggests a pos tagging method, that breaks up the sentences into POS tags, and compares it to a big reference corpus.
-They both discuss the pros and cons of the evaluation systems and suggests that a combination of automated methods should be used, since the different automated methods covers different parts of the text.
+These papers  ~\cite{poseval} ~\cite{bleueval} researched some different methods
+for evaluating Natural Language Generation systems, by comparing automated
+methods and human evaluation methods. Where  ~\cite{bleueval} propose methods
+like Bleu, NIST and Rogue which looks at the words of the generated sentence,
+and compares it to a reference. ~\cite{poseval} Suggests a pos tagging method,
+that breaks up the sentences into POS tags, and compares it to a big reference
+corpus.
+They both discuss the pros and cons of the evaluation systems and suggests that
+a combination of automated methods should be used, since the different automated
+methods covers different parts of the text.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,15 +173,15 @@ They both discuss the pros and cons of the evaluation systems and suggests that 
 \label{sec:method}
 
 \subsection{N-gram}
-n-gram models have been used for the task of NLG~\cite{nlgngram}. n-gram models use the
-statistical property of co-occurrances to calculate the most likely word to
-appear given previous (n-1) grams. We have used trigrams as one of the generation techniques,
-But there are  also some problems with n-gram models. One of them 
-is of the sparse data combinations as n becomes greater. The other problem which will be 
-verified in the results section is that of non-randomness. Trigram tends to 
-pick full sentences out of the corpus and that is where HMMs perform much
-better over trigrams. This problem with ngrams gets aggravated if the training
-corpus is small in size. 
+N-gram models have been used for the task of NLG~\cite{nlgngram}. They
+use the statistical property of co-occurrences to calculate the most likely word
+to appear given previous ($n-1$) grams. We have used trigrams as one of the
+generation techniques, But there are also some problems with n-gram models. One
+of them is of the sparse data combinations as $n$ becomes greater. The other
+problem which will be verified in the results section is that of non-randomness.
+Trigram tends to pick full sentences out of the corpus and that is where HMMs
+perform much better over trigrams. This problem with n-grams gets aggravated if
+the training corpus is small in size. 
 
 
 \subsection{Hidden Markov Models}
@@ -236,7 +244,7 @@ parameters of the HMM (matrix $A$, matrix $B$ and vector $\pi$) are easily
 computed using the equations~\ref{eq:hmm}.
 
 \subsubsection{Supervised HMMs with Text Chunking}
-This type of HMM is an extension of a supervised HMM descibed in
+This type of HMM is an extension of a supervised HMM described in
 section~\ref{sec:suphmm}. Text chunking is a method of grouping words in a
 sentence, in a way that they produce semantical units. It has been successfully 
 applied for the task of shallow parsing~\cite{hmmchunk}. The idea is to enrich the
@@ -267,28 +275,29 @@ in unsupervised HMMs are the same as the ones in supervised HMMs.
 As in other scientific fields, it is crucial to test how well our systems,
 modules and algorithms work. This type of performance measure is called
 evaluation. There are three techniques of evaluating NLG systems: task-based,
-human ratings and metrics~\cite{evalnlg}. In our project we are going to use
+human ratings and metrics~\cite{evalnlg}. In our project we have used
 metric evaluations.
 
 Evaluation gives as an output the ``goodness'' of a sentence or a text. The
 ``goodness'' is defined by three characteristics: fluency, adequateness and
 readability~\cite{evalmethods}. It is often a difficult task to assess each
 characteristic.
-Human ratings are based on opinions of individuals rating the given the given
+Human ratings are based on opinions of individuals, rating the given
 text. These types of evaluations are subjective and hard to measure. But the
-main advantage is the that the natural language is made for interactions between
+main advantage is that the natural language is made for interactions between
 people and we can evaluate texts more accurately than machines. In our project
-we will spend a certain amount of time evaluating our models ourselves and with
+we have spent a certain amount of time evaluating our models ourselves and with
 the help of others to reduce the bias.
 
 Metric evaluations are based on software evaluations of generated text. They are
 more objective than human ratings, but also less reliable. Most evaluators
 compare generated text with texts written by people to compute the score. In our
-project, we used three evaluators- BLEU, Linguitic checker and POS sequence checker~\cite{autoeval}.
+project, we have used three evaluators: BLEU, Linguistic checker and POS
+sequence checker~\cite{autoeval}.
 BLEU (Bilingual Evaluation Understudy) is an algorithm for evaluating the quality of a 
 machine-translated text from one natural language to other. The way we have used it 
 for our task is that, we compare the generated sentence with all the sentences of the
-corpus in pairs(bigram) and then calculate the maximum score out of it.
+corpus in pairs (bigram) and then calculate the maximum score out of it.
 
 For evaluating the grammatical correctness of the generated sentence, we used the
 open source tool named LANGUAGE TOOL. This software is quite clean and robust. It gives 
@@ -297,7 +306,7 @@ of errors in a sentence per the number of words in a sentence can be used as a m
 for evaluating the grammatical correctness of a sentence.
 
 The third test used for evaluation is the POS tag sequence checker. This measure 
-gives us a good estimate of how correct the sentence is correct semantically. The idea
+gives us a good estimate of how correct the sentence is semantically. The idea
 is that a good sentence will have a particular sequence of POS tags. So, the similarity
 between a generated sentence is calculated with all the sentences of a corpus and the 
 maximum score is taken as the final score. 
@@ -318,9 +327,12 @@ wrapper was used.
 
 \subsection{Experimental setup}
 
-We made two sets of tests with two different corpus as training data which were very different in length.
-The longer corpus we used was a H.C. Andersen book, The Emperors new Cloths, which was about 60 000 words. 
-The short corpus was information about zebras that was pulled from Wikipedia which was about 2000 words.
+We made two sets of tests with two different corpora as training data which were
+very different in length.
+The longer corpus we used was a H.C. Andersen book, The Emperors new Clothes,
+which was about 60 000 words long.
+The short corpus was information about zebras that was pulled from Wikipedia
+which was about 2000 words long.
 When performing the tests around 20 sentences were generated for each corpus with each of the four systems and also 20 human written sentences were produced. 
 Then they were evaluated with the automated evaluation methods which generated a score for each of the systems.
 The score of the human written sentences was used as a performance reference. Then the results were plotted and compared
@@ -336,43 +348,57 @@ towards each other and the manually generated scores.
 
 As seen from the xxx the Bleu results are all very close to the human results. Since human results are used as a
 benchmark value on what score a good sentence should get and since all our results are close to the human results
-we found that they are to unreliable  and because of this, we disregarded the Bleu score from our results.
+we found that they are too unreliable  and because of this, we disregarded the
+Bleu score from our results.
 As we can see the human generated sentences do not always have a score equal to 1 but close to it, which
 highlights the shortcomings of the evaluators we have used and also because the evaluators have been trained on
 different corpora.
 
 In the long corpus xxx, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the
-grammatical and the semantics of the sentence. The HMM systems were all pretty similar, but the Supervised HMM performed
-a little bit better on the POS then the other systems.
+grammatics and the semantics of the sentence. The HMM systems were all pretty
+similar, but the Supervised HMM performed ***a little bit better*** on the POS
+than the other systems.
 
 The short corpus gave a lower score for trigrams and a higher score for all the HMM systems, where the supervised was the best.
-Overall the score was higher and closer to the human score with a shorter corpus.
+Overall, the score was higher and closer to the human score with a shorter
+corpus.
 The results of the trigrams here is quite deceiving, since the sentences are not true random it is basically only a copy of the 
-corpus. Which is also the nature of trigrams when dealing with a shorter corpus. So even tho the results look ok, the sentences
-aren't very good since it is not random.
+corpus. Which is also the nature of trigrams when dealing with a shorter corpus.
+***So even tho the results look ok, the sentences aren't very good since it is
+not random.***
 
-The chunking HMM system were introduced to increase the performance of the supervised HMM score. But even tho the
-testing on the short corpus gives a better result then the long corpus the chunking HMM still performs worse then the 
-supervised HMM.
-A problem that we could see when generating sentences with all our HMM systems was that it generated way to many punctuations and citations.
+The chunking HMM systems were introduced to increase the performance of the
+supervised HMM score. But even though the testing on the short corpus gives a
+better result than the long corpus, the chunking HMM still performs worse than
+the supervised HMM.
+A problem that we could see when generating sentences with all our HMM systems
+was that they generated too many punctuations and quotation marks.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
-We found that it is very hard to generate a sentence. When having a open sentence that's not constricted at all, 
-the possible ways to build a sentence are almost endless. Using a story as a corpus and generating sentences 
-is even more difficult as it needs to model the linguistic tools and there are much more degrees of freedom.
-The Trigram system that we designed worked better then the HMM systems for a long corpus, but for the short corpus
-the trigrams just copied whole sentences from the corpus thus performing very bad. 
-The HMM got a better score for the shorter corpus probably because of the lesser occurrence of punctuation and citation marks.
-One of the reasons why we didn't perform better could have been that we needed to tune the HMM's better and have more
-testdata. And we also probably would need some kind of filter to be able to filter the data either that we input to the HMM's or
-output from the HMM's.
-When we tried to improve our HMM results by using chunking, it did not improve performance as much that we would 
-have hoped for and we are not sure why.
+We found that it is very hard to generate a sentence. When having an open
+sentence that is not constricted at all, the possible ways to build a sentence
+are almost endless. Using a story as a corpus and generating sentences is even
+more difficult as it needs to model the linguistic tools and there are much more
+degrees of freedom.
 
-NLG is a hard area, there are no trivial method of generating sentences that will be grammatically and semantically correct.
-But it is a very interesting research area, and is a research field that needs to be mastered before the computers will be seamlessly integrated with human society.
+The Trigram system that we designed worked better than the HMM systems for a
+long corpus, but for the short corpus the trigrams just copied whole sentences
+from the corpus thus performing very bad.
+The HMMs got a better score for the shorter corpus probably because of the
+lesser occurrence of punctuation and quotation marks.
+One of the reasons why we didn't perform better could have been that we needed
+to tune the HMMs better and have more test data. Furthermore, we would probably
+need some kind of filter to be able to filter the data either that we input to
+the HMMs or output from the HMMs.
+When we tried to improve our HMM results by using chunking, it did not improve
+performance as much that we would have hoped for and we are not sure why.
+
+NLG is a hard area, there are no trivial methods for generating sentences that
+will be grammatically and semantically correct.
+But it is a very interesting research area, and is a research field that needs
+to be mastered before the computers will be seamlessly integrated with human society.
 \label{sec:summary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
