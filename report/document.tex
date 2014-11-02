@@ -104,8 +104,8 @@ automated.
 
 \subsection{Contribution}
 It is very hard for a computer to communicate with a human since the language is
-very complex and it is hard to replicate and the language is one of the big
-borders between computers and humans which makes this field of research very
+very complex and it is hard to replicate. The language is one of the big
+borders between computers and humans, which makes this field of research very
 interesting. The method that we are presenting is a new and interesting way to
 generate text focused on a topic using Hidden Markov Models (HMM). We used
 three variants of HMM for this task: unsupervised HMM, supervised HMM and 
@@ -335,38 +335,44 @@ The longer corpus we used was a H.C. Andersen book, The Emperors new Clothes,
 which was about 60 000 words long.
 The short corpus was information about zebras that was pulled from Wikipedia
 which was about 2000 words long.
-When performing the tests around 20 sentences were generated for each corpus with each of the four systems and also 20 human written sentences were produced. 
-Then they were evaluated with the automated evaluation methods which generated a score for each of the systems.
-The score of the human written sentences was used as a performance reference. Then the results were plotted and compared
+When performing the tests around 20 sentences were generated for each corpus 
+with each of the four systems and also 20 human written sentences were produced. 
+Then they were evaluated with the automated evaluation methods which generated
+a score for each of the systems. The score of the human written sentences was 
+used as a performance reference. Then the results were plotted and compared
 towards each other and the manually generated scores.
 \subsection{Experiment}
 \begin{figure}
 \centering
 \includegraphics[width=0.8\linewidth]{resultsShort}
 \includegraphics[width=0.8\linewidth]{results}
-\caption{Experimental results when generating sentences with the four tested systems for a long corpus and a short corpus respectively, using the three automated evaluation methods, and comparing it to the human results.}
+\caption{Experimental results when generating sentences with the four tested systems 
+for a long corpus and a short corpus respectively, using the three automated
+evaluation methods, and comparing it to the human results.}
 \label{fig:longresults}
 \end{figure}
 
-As seen from the Figure~\ref{fig:longresults} the Bleu results are all very close to the human results. Since human results are used as a
-benchmark value on what score a good sentence should get and since all our results are close to the human results
-we found that they are too unreliable  and because of this, we disregarded the
-Bleu score from our results.
-As we can see the human generated sentences do not always have a score equal to 1 but close to it, which
-highlights the shortcomings of the evaluators we have used and also because the evaluators have been trained on
-different corpora.
+As seen from the Figure~\ref{fig:longresults} the Bleu results are all very close 
+to the human results. Since human results are used as a benchmark value on 
+what score a good sentence should get and since all our results are close to the 
+human results we found that they are too unreliable  and because of this, 
+we disregarded the Bleu score from our results.
+As we can see the human generated sentences do not always have a score 
+equal to 1 but close to it, which highlights the shortcomings of the evaluators we
+have used and also because the evaluators have been trained on different corpora.
 
-In the long corpus from Figure~\ref{fig:longresults}, the trigram performed the best since it received the highest LC and POS score, which co-relates with the
-grammatics and the semantics of the sentence. ***The HMM systems were all pretty similar, but the Supervised HMM performed
-a little bit better on the POS then the other systems.***
+In the long corpus from Figure~\ref{fig:longresults}, the trigram performed 
+the best since it received the highest LC and POS score, which co-relates with the
+grammatics and the semantics of the sentence. The performance of the 
+HMM systems were all quite similar, the system that performed better then the 
+others were the Supervised HMM, as seen on the POS score.
 
-The short corpus gave a lower score for trigrams and a higher score for all the HMM systems, where the supervised was the best.
-Overall, the score was higher and closer to the human score with a shorter
-corpus.
-The results of the trigrams here is quite deceiving, since the sentences are not true random it is basically only a copy of the 
-corpus. Which is also the nature of trigrams when dealing with a shorter corpus.
-***So even tho the results look ok, the sentences aren't very good since it is
-not random.***
+The short corpus gave a lower score for trigrams and a higher score for all the 
+HMM systems, where the supervised was the best. Overall, the score was 
+higher and closer to the human score with a shorter corpus.
+The results of the trigrams here is quite deceiving, since the sentences are 
+not true random it is basically only a copy of the corpus. Which is also the 
+nature of trigrams when dealing with a shorter corpus.
 
 The chunking HMM systems were introduced to increase the performance of the
 supervised HMM score. But even though the testing on the short corpus gives a
@@ -386,15 +392,14 @@ degrees of freedom.
 
 The Trigram system that we designed worked better than the HMM systems for a
 long corpus, but for the short corpus the trigrams just copied whole sentences
-from the corpus thus performing very bad.
-The HMMs got a better score for the shorter corpus probably because of the
+from the corpus thus performing very bad.The HMMs got a better score for the shorter corpus probably because of the
 lesser occurrence of punctuation and quotation marks.
 One of the reasons why we didn't perform better could have been that we needed
 to tune the HMMs better and have more test data. Furthermore, we would probably
 need some kind of filter to be able to filter the data either that we input to
-the HMMs or output from the HMMs.
-When we tried to improve our HMM results by using chunking, it did not improve
-performance as much that we would have hoped for and we are not sure why.
+the HMMs or output from the HMMs. When we tried to improve our HMM 
+results by using chunking, it did not improve performance as much that we 
+would have hoped for and we are not sure why.
 
 NLG is a hard area, there are no trivial methods for generating sentences that
 will be grammatically and semantically correct.

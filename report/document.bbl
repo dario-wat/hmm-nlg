@@ -1,10 +1,9 @@
 \begin{thebibliography}{10}
 
 \bibitem{bleueval}
-
-
-\bibitem{hmm}
-\url{http://mlg.eng.cam.ac.uk/zoubin/papers/ijprai.pdf}.
+Anja Belz and Ehud Reiter.
+\newblock Comparing automatic and human evaluation of nlg systems.
+\newblock In {\em In Proc. EACL’06}, pages 313--320, 2006.
 
 \bibitem{nltk}
 Steven Bird, Ewan Klein, and Edward Loper.
@@ -32,6 +31,12 @@ G.~Doddington.
   cooccurrence statistics}.
 \newblock In {\em Proceedings of the Human Language Technology Conference
   (HLT)}, 2002.
+
+\bibitem{hmm}
+Zoubin Ghahramani.
+\newblock {An Introduction to Hidden Markov Model and Bayesian Networks}.
+\newblock {\em International Journal of Pattern Recognition and Artificial
+  Intelligence}, 2001.
 
 \bibitem{hmmsr}
 XD~Huang, Y~Ariki, and MA~Jack.
