@@ -88,13 +88,14 @@ as mentioned in \cite{nlgScratch}. The evaluation of how correct a sentence is
 also very challenging and a field in its own. Furthermore, the 
 aggravating circumstance that the language (both dictionary and the grammar)
 is continuously evolving, makes it even harder to define a specific set of rules 
-that apply all the time, considering that our datasets (news) are written by numerous
-authors and in different time instants. NLG systems broadly have three subcomponents:text
-planning, sentence planning and surface realisation.
-In text planning, content and target of the text are determined, During sentence
+that apply all the time, considering that our datasets are written by numerous
+authors and in different time instants. NLG systems broadly have three
+subcomponents: text planning, sentence planning and surface realisation.
+In text planning, content and target of the text are determined. During sentence
 planning, syntactic and lexical means are ascertained whereas in realisation, 
 actual words are strung together to give form to the basic structure which comes out
 of sentence planning. 
+
 It is also preferred if the results are benchmarked in some systematical way,
 either manually (which is not preferred), semi-manually where the system might
 give suggestions and the operator help the computer or it is done completely
@@ -192,8 +193,8 @@ with very good results in the fields of speech recognition and also in NLU
 to do something similar to the inverse of what POS Tagging does. In POS
 Tagging, an input string of words is mapped to a hidden sequence of semantic POS
 tags. The POS Tags then can serve as the hidden states in the HMM model and the
-words as the observations. HMMs 
-Algorithm~\ref{alg:hmm}.
+words as the observations. The algorithm used for generating text with HMMs is
+described by Algorithm~\ref{alg:hmm}.
 
 In our work, we have used three types of HMMs for the text generation:
 \textit{supervised, supervised with text chunking and unsupervised}.
@@ -222,14 +223,17 @@ used for evaluating the POS tags in a sentence. The state-transition matrix and
 emission matrix are then computed with them, using the supervised learning
 algorithm. The algorithm is purely statistical and is described by the
 following equations:
-\begin{align*}
+\begin{align}
+\label{eq:hmm}
 A_{ij} = \frac{S_{ij}}{\sum_{k} S_{ik}} \qquad
 B_{i}(w) = \frac{E_{i}(w)}{\sum_{w'} E_{i}(w')} \qquad
 \pi_{i} = \frac{S_{i}}{\sum_{k} S_{k}}
-\end{align*}
+\end{align}
 where $S_{ij}$ is the number of occurrences of transitions from state $i$ to
 state $j$, $E_{i}(w)$ is the number of occurrences of the observation $w$ in the
-state $i$ and $S_{i}$ is the number of occurrences of state $i$.
+state $i$ and $S_{i}$ is the number of occurrences of state $i$. The
+parameters of the HMM (matrix $A$, matrix $B$ and vector $\pi$) are easily
+computed using the equations~\ref{eq:hmm}.
 
 \subsubsection{Supervised HMMs with Text Chunking}
 This type of HMM is an extension of a supervised HMM descibed in
