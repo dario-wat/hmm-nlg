@@ -288,7 +288,8 @@ project, we used three evaluators- BLEU, Linguitic checker and POS sequence chec
 BLEU (Bilingual Evaluation Understudy) is an algorithm for evaluating the quality of a 
 machine-translated text from one natural language to other. The way we have used it 
 for our task is that, we compare the generated sentence with all the sentences of the
-corpus in pairs(bigram) and then calculate the maximum score out of it.
+corpus in 4-grams which is considered the best number for evaluation ~\cite{bleueval}
+ and then calculate the maximum score out of it.
 
 For evaluating the grammatical correctness of the generated sentence, we used the
 open source tool named LANGUAGE TOOL. This software is quite clean and robust. It gives 
@@ -334,14 +335,14 @@ towards each other and the manually generated scores.
 \label{fig:longresults}
 \end{figure}
 
-As seen from the xxx the Bleu results are all very close to the human results. Since human results are used as a
+As seen from the Figure~\ref{fig:longresults} the Bleu results are all very close to the human results. Since human results are used as a
 benchmark value on what score a good sentence should get and since all our results are close to the human results
 we found that they are to unreliable  and because of this, we disregarded the Bleu score from our results.
 As we can see the human generated sentences do not always have a score equal to 1 but close to it, which
 highlights the shortcomings of the evaluators we have used and also because the evaluators have been trained on
 different corpora.
 
-In the long corpus xxx, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the
+In the long corpus from Figure~\ref{fig:longresults}, the trigrams performed the best since it received the highest LC and POS score, which co-relates with the
 grammatical and the semantics of the sentence. The HMM systems were all pretty similar, but the Supervised HMM performed
 a little bit better on the POS then the other systems.
 

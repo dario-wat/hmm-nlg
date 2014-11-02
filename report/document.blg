@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: document.aux
+The style file: plain.bst
+Database file #1: ref.bib
+I was expecting a `,' or a `}'---line 99 of file ref.bib
+ :     
+ :     author = {Anja Belz and Ehud Reiter},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in bleueval
+Warning--to sort, need author or key in hmm
+Warning--empty author in bleueval
+Warning--empty title in bleueval
+Warning--empty booktitle in bleueval
+Warning--empty year in bleueval
+Warning--there's a number but no series in hmmsr
+Warning--there's a number but no series in buildingNLG
+Warning--empty journal in poseval
+Warning--there's a number but no series in RussellNorvigAIBook3rd
+You've used 16 entries,
+            2118 wiz_defined-function locations,
+            567 strings with 6057 characters,
+and the built_in function-call counts, 4252 in all, are:
+= -- 376
+> -- 237
+< -- 3
++ -- 95
+- -- 78
+* -- 260
+:= -- 721
+add.period$ -- 43
+call.type$ -- 16
+change.case$ -- 85
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 161
+empty$ -- 349
+format.name$ -- 78
+if$ -- 877
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 15
+newline$ -- 75
+num.names$ -- 28
+pop$ -- 129
+preamble$ -- 1
+purify$ -- 71
+quote$ -- 0
+skip$ -- 125
+stack$ -- 0
+substring$ -- 106
+swap$ -- 19
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 56
+warning$ -- 10
+while$ -- 30
+width$ -- 18
+write$ -- 145
+(There was 1 error message)

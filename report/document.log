@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.2)  1 NOV 2014 18:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.2)  2 NOV 2014 14:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -351,19 +351,19 @@ LaTeX Info: Redefining \nameref on input line 36.
 \openout3 = `document.out'.
 
 
-<pictures/akash.jpg, id=76, 529.98pt x 765.86125pt>
+<pictures/akash.jpg, id=68, 529.98pt x 765.86125pt>
 File: pictures/akash.jpg Graphic file (type jpg)
  <use pictures/akash.jpg>
 Package pdftex.def Info: pictures/akash.jpg used on input line 41.
 (pdftex.def)             Requested size: 50.7019pt x 73.26007pt.
 
-<pictures/dario.jpg, id=77, 683.55376pt x 963.6pt>
+<pictures/dario.jpg, id=69, 683.55376pt x 963.6pt>
 File: pictures/dario.jpg Graphic file (type jpg)
  <use pictures/dario.jpg>
 Package pdftex.def Info: pictures/dario.jpg used on input line 41.
 (pdftex.def)             Requested size: 50.7019pt x 71.4729pt.
 
-<pictures/stefan.jpg, id=78, 293.095pt x 428.60126pt>
+<pictures/stefan.jpg, id=70, 293.095pt x 428.60126pt>
 File: pictures/stefan.jpg Graphic file (type jpg)
 
 <use pictures/stefan.jpg>
@@ -371,123 +371,64 @@ Package pdftex.def Info: pictures/stefan.jpg used on input line 41.
 (pdftex.def)             Requested size: 50.7019pt x 74.13652pt.
  [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- <./pictures/akash.jpg> <./pictures/dario.jpg> <./pictures/stefan.jpg>]
+ <./pictures/akash.jpg> <./pictures/dario.jpg> <./pictures/stefan.jpg>] [2
 
-LaTeX Warning: Citation `nlgsystem01' on page 2 undefined on input line 71.
+] [3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 184.
 
-
-LaTeX Warning: Citation `nlgScratch' on page 2 undefined on input line 87.
-
-[2
-
-]
-
-LaTeX Warning: Citation `buildingNLG' on page 3 undefined on input line 133.
-
-
-LaTeX Warning: Citation `nlgsystem01' on page 3 undefined on input line 140.
-
-
-LaTeX Warning: Citation `hmmnlg' on page 3 undefined on input line 150.
-
-[3]
-
-LaTeX Warning: Citation `poseval' on page 4 undefined on input line 156.
-
-
-LaTeX Warning: Citation `bleueval' on page 4 undefined on input line 156.
-
-
-LaTeX Warning: Citation `bleueval' on page 4 undefined on input line 156.
-
-
-LaTeX Warning: Citation `poseval' on page 4 undefined on input line 156.
-
-
-LaTeX Warning: Citation `nlgngram' on page 4 undefined on input line 166.
-
-
-LaTeX Warning: Citation `hmm' on page 4 undefined on input line 183.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 186.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 186.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 184.
  [4]
-
-LaTeX Warning: Citation `hmmsr' on page 5 undefined on input line 193.
-
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 204.
-
-LaTeX Warning: Citation `hmmchunk' on page 5 undefined on input line 240.
-
-[5]
-
-LaTeX Warning: Citation `evalnlg' on page 6 undefined on input line 268.
-
-
-LaTeX Warning: Citation `evalmethods' on page 6 undefined on input line 273.
-
-[6]
-
-LaTeX Warning: Citation `autoeval' on page 7 undefined on input line 285.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 304.
-
-[7]
-
-LaTeX Warning: Citation `nltk' on page 8 undefined on input line 328.
-
-<pictures/resultsShort.jpg, id=133, 969.6225pt x 689.57625pt>
+put line 202.
+ [5] [6]
+[7] <pictures/resultsShort.jpg, id=157, 969.6225pt x 689.57625pt>
 File: pictures/resultsShort.jpg Graphic file (type jpg)
 
 <use pictures/resultsShort.jpg>
-Package pdftex.def Info: pictures/resultsShort.jpg used on input line 351.
+Package pdftex.def Info: pictures/resultsShort.jpg used on input line 327.
 (pdftex.def)             Requested size: 312.00119pt x 221.88947pt.
 
-<pictures/results.jpg, id=134, 971.63pt x 680.5425pt>
+<pictures/results.jpg, id=158, 971.63pt x 680.5425pt>
 File: pictures/results.jpg Graphic file (type jpg)
 
 <use pictures/results.jpg>
-Package pdftex.def Info: pictures/results.jpg used on input line 352.
+Package pdftex.def Info: pictures/results.jpg used on input line 328.
 (pdftex.def)             Requested size: 312.00119pt x 218.52571pt.
  [8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure
 .1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.365 T
-       he short corpus gave a lower score for trigrams and a higher score fo...
- <./pictures/resultsShort.jpg> <./pictures/results.jpg>]
-No file document.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 399.
-[10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 399.
+l.369 
+       <./pictures/resultsShort.jpg> <./pictures/results.jpg>] (./document.bbl
+Missing character: There is no ï in font cmr12!
+Missing character: There is no ¿ in font cmr12!
+Missing character: There is no ½ in font cmr12!
+
+[10])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 379.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 379.
  (./document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 399.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 399.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 379.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 379.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: B6D6D2F3F51BDEB2500C4F8C37343C72;1226.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 399.
+(rerunfilecheck)             Checksum: 13AF2A9D0321CF36835B391A6C37F760;1026.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 379.
  ) 
 Here is how much of TeX's memory you used:
- 6551 strings out of 493117
- 95040 string characters out of 6135433
- 185211 words of memory out of 5000000
+ 6570 strings out of 493117
+ 95288 string characters out of 6135433
+ 185706 words of memory out of 5000000
  9909 multiletter control sequences out of 15000+600000
- 12018 words of font info for 43 fonts, out of 8000000 for 9000
+ 12187 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,43p,508b,395s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,16n,43p,511b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -502,11 +443,12 @@ exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
 ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 /2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on document.pdf (10 pages, 487963 bytes).
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on document.pdf (11 pages, 500908 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 170 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 
