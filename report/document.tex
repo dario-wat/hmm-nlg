@@ -12,7 +12,7 @@
 
 \graphicspath{{pictures/}}
 
-\title{A Comparison of N-gram and Hidden Markov Model Text Generators}
+\title{A Comparison of Trigram and\\ Hidden Markov Model Text Generators}
 \author{\hspace*{-0.5cm}\begin{tabular}{cccc}
 Akash Kumar Dhaka & Dario Vidas & Stefan Annell \\
 1990-02-26 & 1992-06-24 & 1987-09-30 \\
@@ -35,23 +35,23 @@ akashd@kth.se & vidas@kth.se & steann@kth.se \\
 
 \begin{document}
 
-\nocite{*}
+%\nocite{*}
 
 \maketitle
 \thispagestyle{fancy}
 
 \begin{abstract}
-Natural Language Generation (NLG) is a Natural Language Processing (NLP) task of
+Natural Language Generation is a Natural Language Processing task of
 generating natural language. The problem is well known and well researched, but
 the field is far from being fully explored. In this paper, we propose an idea of
-building a text generator based on Hidden Markov Model (HMM). HMM allows us to
-append words in a sentence that depend on a whole sequence until that point,
+building a text generator based on Hidden Markov Model. Hidden Markov Model
+allows us to append words in a sentence that depend on a whole sequence until that point,
 unlike other methods, such as n-gram, which use only a certain number of words
-to predict the next one. We implemented three different types of HMM models for
-generation- unsupervised, supervised and chunked supervised. Three different evaluators 
-were used for comparing the performance of the generators with human written-sentences. 
-Their respective performace suggested to us that HMM generators work better than 
-trigram generator over a small corpus and gives much more random texts whereas 
+to predict the next one. We implemented three different types of Hidden Markov
+Models for generation: unsupervised, supervised and chunked supervised. Three
+different evaluators were used for comparing the performance of the generators with human written-sentences. 
+Their respective performace suggested to us that Hidden Markov Model generators
+work better than trigram generator over a small corpus and gives much more random texts whereas 
 the latter generates better sentences when fed in with a large corpus.
 
 \end{abstract}
@@ -64,8 +64,8 @@ the latter generates better sentences when fed in with a large corpus.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{sec:intro}
-Natural Language Generation(NLG) is the field of generating natural language for
-a computer from a knowledge base or some information that the system can
+Natural Language Generation (NLG) is the field of generating natural language
+for a computer from a knowledge base or some information that the system can
 understand. Some fields where the NLG is being applied are weather
 forecast generation, summarize statistical data extracted from a database and
 describing chains of reasoning performed by a system~\cite{nlgsystem01}.
@@ -128,24 +128,22 @@ summarized and concluded in Section~\ref{sec:summary}.
 The field of NLG and NLP are two very large fields that are subfields of
 artificial intelligence and computational linguistics. A lot of research has
 been done in these fields, although the fields are far from fully explored. Some
-of the earliest work in this field was performed in the 1970's by people like
-Goldman and Davey, where they helped to define the main problems in NLG 
-as explained in \cite[p.~19-20]{buildingNLG}, where they also mention that NLG
-started to be researched allot during 1980's by people like McKeown and Appelt
+of the earliest work in this field was performed in the 1970's by people such as
+Goldman and Davey, when they helped to define the main problems in NLG 
+as explained in \cite[p.~19-20]{buildingNLG}. They mention that NLG
+started to be researched a lot during 1980's by people like McKeown and Appelt
 that had a big impact on how the subsequent research was going to be performed on NLG.
-The field had a big increase in the 1990's where a lot of real-world applications were made,
-like the weather forecast system FOG.
+The field had a big increase in the 1990's when many real-world
+applications were made, such as the weather forecast system FOG.
 
-The paper Building Applied Natural Language Generation
-Systems~\cite{nlgsystem01} is about the architecture and how to structure a
-NLG system when designing it. They describe six main tasks that needs to be
-performed when generating a text; content determination, discourse planning,
-sentence aggregation, lexicalization, referring expression generation and
-linguistic realisation. They also discuss the sub components the system
-needs to design and the algorithms, using which the different subproblems can be
-solved. The main use of this paper is the structure of the generation part of
-the system, but also suggestions and pointers on how the arising problems can be
-solved.
+The architecture and structuration of NLG systems is described
+in~\cite{nlgsystem01}. They introduce six main tasks that need to be performed
+when generating a text: content determination, discourse planning, sentence
+aggregation, lexicalization, referring expression generation and linguistic
+realisation. They also discuss the sub components the system needs to design and
+the algorithms, using which the different subproblems can be solved. The main
+use of this paper is the structure of the generation part of the system, but
+also suggestions and pointers on how the arising problems can be solved.
 
 Usage of HMMs in text generation is mentioned in~\cite{hmmnlg} where the model
 is used in a task-oriented environment. Authors describe HMM generation process
@@ -153,19 +151,20 @@ to be very similar to POS (part of speech) tagging. States represent words, and
 state sequences, word phrases. The model is designed from the corpus data
 using ABL algorithm and it learns using the Baum-Welch algorithm.
 
-The paper Shallow Parsing Using Specialized HMMs~\cite{hmmchunk} uses the technique
-of chunking for parsing a sentence, which we have used in one of our HMM generator.
+One of the techniques which we have used, called chunking, is described
+in~\cite{hmmchunk}. In this paper, chunking is used for parsing sentences. The
+same method was used in our chunked supervised HMM implementation.
 
-These papers  ~\cite{poseval} ~\cite{bleueval} researched some different methods
-for evaluating Natural Language Generation systems, by comparing automated
-methods and human evaluation methods. Where  ~\cite{bleueval} propose methods
-like Bleu, NIST and Rogue which looks at the words of the generated sentence,
-and compares it to a reference. ~\cite{poseval} Suggests a pos tagging method,
-that breaks up the sentences into POS tags, and compares it to a big reference
-corpus.
-They both discuss the pros and cons of the evaluation systems and suggests that
-a combination of automated methods should be used, since the different automated
-methods covers different parts of the text.
+Some different methods for evaluating Natural Language Generation systems are
+described in~\cite{poseval} and~\cite{bleueval}. Both papers compare automated
+methods and human evaluation methods.~\cite{bleueval} also proposes methods such
+as BLEU (Bilingual Evaluation Understudy), NIST (National Institute of Standards
+and Technology) and Rogue which look at the words of the generated sentence, and
+compare it to a reference. ~\cite{poseval} suggests a POS tagging method that
+breaks up the sentences into POS tags, and compares it to a large reference
+corpus. They both discuss the pros and cons of the evaluation systems and
+suggest that a combination of automated methods should be used, since the
+different automated methods cover different parts of the text.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,7 +175,7 @@ methods covers different parts of the text.
 N-gram models have been used for the task of NLG~\cite{nlgngram}. They
 use the statistical property of co-occurrences to calculate the most likely word
 to appear given previous ($n-1$) grams. We have used trigrams as one of the
-generation techniques, But there are also some problems with n-gram models. One
+generation techniques, but there are also some problems with n-gram models. One
 of them is of the sparse data combinations as $n$ becomes greater. The other
 problem which will be verified in the results section is that of non-randomness.
 Trigram tends to pick full sentences out of the corpus and that is where HMMs
@@ -195,17 +194,17 @@ A certain HMM is fully defined by its:
   \item initial state probability distribution $\pi$.
 \end{itemize}
 
-We propose to use HMMs for the surface generalisation task. HMMs have been used
+We propose to use HMMs for the surface generation task. HMMs have been used
 with very good results in the fields of speech recognition and also in NLU
 (Natural Language Understanding)~\cite{hmmsr}. The idea of HMM in this work is
-to do something similar to the inverse of what POS Tagging does. In POS
-Tagging, an input string of words is mapped to a hidden sequence of semantic POS
-tags. The POS Tags then can serve as the hidden states in the HMM model and the
+to do something similar to the inverse of what POS tagging does. In POS
+tagging, an input string of words is mapped to a hidden sequence of semantic POS
+tags. The POS tags then can serve as the hidden states in the HMM model and the
 words as the observations. The algorithm used for generating text with HMMs is
 described by Algorithm~\ref{alg:hmm}.
 
 In our work, we have used three types of HMMs for the text generation:
-\textit{supervised, supervised with text chunking and unsupervised}.
+\textit{supervised, supervised with text chunking} and \textit{unsupervised}.
 
 \begin{algorithm}
 \caption{HMM Text Generation Algorithm}
@@ -226,10 +225,10 @@ In our work, we have used three types of HMMs for the text generation:
 \label{sec:suphmm}
 In the supervised HMMs, the POS tags are used as the states and the words and
 punctuation of the corpus are treated as the emissions. NLTK's~\footnote{Natural
-Language Toolkit - Open source library for NLG written in python} default POS Tagger was
-used for evaluating the POS tags in a sentence. The state-transition matrix and
-emission matrix are then computed with them, using the supervised learning
-algorithm. The algorithm is purely statistical and is described by the
+Language Toolkit - Open source library for NLG written in python} default POS
+tagger was used for evaluating the POS tags in a sentence. The state-transition
+matrix and emission matrix are then computed with them, using the supervised
+learning algorithm. The algorithm is purely statistical and is described by the
 following equations:
 \begin{align}
 \label{eq:hmm}
@@ -248,8 +247,8 @@ This type of HMM is an extension of a supervised HMM described in
 section~\ref{sec:suphmm}. Text chunking is a method of grouping words in a
 sentence, in a way that they produce semantical units. It has been successfully 
 applied for the task of shallow parsing~\cite{hmmchunk}. The idea is to enrich the
-observations with information on the parts(chunks) of a sentence like Noun phrase(NP)
-and verb phrase(VP). For example, the sentence
+observations with information on the parts (chunks) of a sentence like noun
+phrase (NP) and verb phrase (VP). For example, the sentence
 \textit{``The quick brown fox jumps over the lazy dog.''} gets splitted into the
 following chunks: \textit{``The quick brown fox'', ``jumps'', ``over'', ``a lazy
 dog'', ``.''}. It can be clearly seen now that \textit{``The quick brown fox''}
@@ -294,7 +293,8 @@ more objective than human ratings, but also less reliable. Most evaluators
 compare generated text with texts written by people to compute the score. In our
 project, we have used three evaluators: BLEU, Linguistic checker and POS
 sequence checker~\cite{autoeval}.
-BLEU (Bilingual Evaluation Understudy) is an algorithm for evaluating the quality of a 
+
+BLEU is an algorithm for evaluating the quality of a 
 machine-translated text from one natural language to other. The way we have used it 
 for our task is that, we compare the generated sentence with all the sentences of the
 corpus in 4-grams which is considered the best number for evaluation ~\cite{bleueval}
@@ -309,9 +309,9 @@ for evaluating the grammatical correctness of a sentence.
 
 The third test used for evaluation is the POS tag sequence checker. This measure 
 gives us a good estimate of how correct the sentence is semantically. The idea
-is that a good sentence will have a particular sequence of POS tags. So, the similarity
-between a generated sentence is calculated with all the sentences of a corpus and the 
-maximum score is taken as the final score. 
+is that a good sentence will have a particular sequence of POS tags. The
+similarity between a generated sentence is calculated with all the sentences of
+a corpus and the maximum score is taken as the final score. 
 
 \subsection{Implementation}
 \label{sec:impl}
@@ -330,18 +330,46 @@ wrapper was used.
 \subsection{Experimental setup}
 
 We made two sets of tests with two different corpora as training data which were
-very different in length.
-The longer corpus we used was a H.C. Andersen book, The Emperors new Clothes,
-which was about 60 000 words long.
-The short corpus was information about zebras that was pulled from Wikipedia
-which was about 2000 words long.
-When performing the tests around 20 sentences were generated for each corpus 
-with each of the four systems and also 20 human written sentences were produced. 
-Then they were evaluated with the automated evaluation methods which generated
-a score for each of the systems. The score of the human written sentences was 
-used as a performance reference. Then the results were plotted and compared
-towards each other and the manually generated scores.
+different in length. The longer corpus we used was a H.C. Andersen book,
+\textit{The Emperors new Clothes}, which was about 60 000 words long. The short
+corpus was information about zebras that was pulled from Wikipedia which was about 2000
+words long. When performing the tests, around 20 sentences were generated for
+each corpus with each of the four systems and also 20 human written sentences
+were produced. They were, then,  evaluated with the automated evaluation methods
+which generated a score for each of the systems. The score of the human written
+sentences was used as a performance reference. Finally, the results were plotted
+and compared towards each other and the manually generated scores.
 \subsection{Experiment}
+
+As seen from the Figure~\ref{fig:longresults} the BLEU results are all very
+close to the human results. Since human results are used as a benchmark value on 
+what score a good sentence should get, and since all our results are close to
+the human results, we have found that they are too unreliable. Because of
+this, we have disregarded the BLEU score from our results.
+It can be seen that the human generated sentences do not always have a score 
+equal to 1 but close to it, which highlights the shortcomings of the evaluators we
+have used and also because the evaluators have been trained on different corpora.
+
+In the long corpus from Figure~\ref{fig:longresults}, the trigram performed 
+the best since it received the highest LC and POS score, which co-relates with the
+grammatics and the semantics of the sentence. The performance of the 
+HMM systems were all similar. The system that performed better than the 
+others was the Supervised HMM, as seen on the POS score.
+
+The short corpus gave a lower score for trigrams and a higher score for all the 
+HMM systems, where the supervised was the best. Overall, the score was 
+higher and closer to the human score with a shorter corpus.
+The results of the trigrams here are quite deceiving. The sentences are 
+not true random, they are usually just a copy of the corpus. Which is also the 
+nature of trigrams when dealing with a shorter corpus.
+
+The chunking HMM systems were introduced to increase the performance of the
+supervised HMM score. But even though the testing on the short corpus gives a
+better result than the long corpus, the chunking HMM still performs worse than
+the supervised HMM.
+A problem that we could see when generating sentences with all our HMM systems
+was that they generated too many punctuations and quotation marks.
+
 \begin{figure}
 \centering
 \includegraphics[width=0.8\linewidth]{resultsShort}
@@ -352,62 +380,38 @@ evaluation methods, and comparing it to the human results.}
 \label{fig:longresults}
 \end{figure}
 
-As seen from the Figure~\ref{fig:longresults} the Bleu results are all very close 
-to the human results. Since human results are used as a benchmark value on 
-what score a good sentence should get and since all our results are close to the 
-human results we found that they are too unreliable  and because of this, 
-we disregarded the Bleu score from our results.
-As we can see the human generated sentences do not always have a score 
-equal to 1 but close to it, which highlights the shortcomings of the evaluators we
-have used and also because the evaluators have been trained on different corpora.
-
-In the long corpus from Figure~\ref{fig:longresults}, the trigram performed 
-the best since it received the highest LC and POS score, which co-relates with the
-grammatics and the semantics of the sentence. The performance of the 
-HMM systems were all quite similar, the system that performed better then the 
-others were the Supervised HMM, as seen on the POS score.
-
-The short corpus gave a lower score for trigrams and a higher score for all the 
-HMM systems, where the supervised was the best. Overall, the score was 
-higher and closer to the human score with a shorter corpus.
-The results of the trigrams here is quite deceiving, since the sentences are 
-not true random it is basically only a copy of the corpus. Which is also the 
-nature of trigrams when dealing with a shorter corpus.
-
-The chunking HMM systems were introduced to increase the performance of the
-supervised HMM score. But even though the testing on the short corpus gives a
-better result than the long corpus, the chunking HMM still performs worse than
-the supervised HMM.
-A problem that we could see when generating sentences with all our HMM systems
-was that they generated too many punctuations and quotation marks.
-
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
-We found that it is very hard to generate a sentence. When having an open
-sentence that is not constricted at all, the possible ways to build a sentence
+We found the task of generating sentences to be very difficult. When having an
+open sentence that is not constricted at all, the possible ways to build a sentence
 are almost endless. Using a story as a corpus and generating sentences is even
-more difficult as it needs to model the linguistic tools and there are much more
-degrees of freedom.
+more difficult as it needs to model the linguistic tools, and there are much
+more degrees of freedom.
 
-The Trigram system that we designed worked better than the HMM systems for a
-long corpus, but for the short corpus the trigrams just copied whole sentences
-from the corpus thus performing very bad.The HMMs got a better score for the shorter corpus probably because of the
-lesser occurrence of punctuation and quotation marks.
-One of the reasons why we didn't perform better could have been that we needed
-to tune the HMMs better and have more test data. Furthermore, we would probably
-need some kind of filter to be able to filter the data either that we input to
-the HMMs or output from the HMMs. When we tried to improve our HMM 
-results by using chunking, it did not improve performance as much that we 
-would have hoped for and we are not sure why.
+The trigram system that we have designed worked better than the HMM systems for
+a long corpus, but for the short corpus the trigrams just copied whole sentences
+from the corpus thus performing very badly. The HMMs got a better score for the
+shorter corpus because of the lesser occurrence of the punctuation and quotation
+marks.
+One of the reasons why it did not perform better could have been that we needed
+to tune the HMM parameters better and have more test data. Furthermore, an
+additional text filter might have improved the performance, either at the input
+to the HMMs or output from the HMMs.
+When we tried to improve our HMM results with chunking, it did not improve
+performance as much that we would have hoped as seen in
+Figure~\ref{fig:longresults}. But we do feel that chunking still is a good way
+to increase the richness of the sentences.
 
 NLG is a hard area, there are no trivial methods for generating sentences that
-will be grammatically and semantically correct.
-But it is a very interesting research area, and is a research field that needs
-to be mastered before the computers will be seamlessly integrated with human society.
+would be grammatically and semantically correct.
+Nevertheless, it is a very interesting research area that needs to be mastered
+before the computers become seamlessly integrated with human society.
 \label{sec:summary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \bibliography{ref}
 \bibliographystyle{plain}
 
